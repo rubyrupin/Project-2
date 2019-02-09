@@ -1,13 +1,7 @@
-// Seeds file that remove all users and create 2 new users
-
-// To execute this seed, run from the root of the project
-// $ node bin/seeds.js
-
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const userData = require('./userData');
 
-const bcryptSalt = 10;
 
 mongoose
   .connect('mongodb://localhost/ironlearn', {useNewUrlParser: true})
@@ -17,17 +11,6 @@ mongoose
   .catch(err => {
     console.error('Error connecting to mongo', err)
   });
-
-let users = [
-  {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
-  },
-  {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
-  }
-]
 
 User.deleteMany()
 .then(() => {
