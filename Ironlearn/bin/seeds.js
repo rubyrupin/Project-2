@@ -4,10 +4,8 @@
 // $ node bin/seeds.js
 
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
-const bcryptSalt = 10;
 
 mongoose
   .connect('mongodb://localhost/ironlearn', {useNewUrlParser: true})
@@ -18,16 +16,6 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-let users = [
-  {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
-  },
-  {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
-  }
-]
 
 User.deleteMany()
 .then(() => {

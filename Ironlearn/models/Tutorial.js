@@ -6,7 +6,7 @@ const tutorialSchema = new Schema(
     link: { type: String, required: true },
     title: { type: String, required: true},
     description: {type: String, required: true},
-    duaration: {type: Number, required: true},
+    duration: {type: Number, required: true},
     categories: { type: [String], enum: ['html-css', 'javascript', 'react', 'nodejs', 'express', 'mongodb'] },
     types: {type: [String], enum: ['article', 'video']},
     NbOfLikes: {type: Number, default: 0},
