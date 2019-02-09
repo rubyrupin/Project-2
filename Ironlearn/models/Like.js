@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const likeSchema = new Schema({
-	user: { [String]},
-	tutorial: { [String]},
+	user: { type: type.Schema.Types.ObjectId, ref:'user'},
+	likedTutorial: { type: type.Schema.Types.ObjectId, ref: 'tutorial' },
 }, {
 		timestamps: {
 			createdAt: 'created_at',
