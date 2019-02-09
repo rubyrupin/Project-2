@@ -1,3 +1,7 @@
+const tutorials = []
+
+module.exports = tutorials
+
 // Const tutorials = [
 // 	{
 // 		link: "https://www.youtube.com/watch?v=hnCmSXCZEpU",
