@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     username: { type: String },
     password: { type: String },
-    imgUrl: { type: String },
+    imgUrl: { type: String, default: '../public/images/profile-pic' },
     description: { type: String }
   },
   {
