@@ -1,6 +1,10 @@
+// TODO:
 const tutorials = []
 
-module.exports = tutorials
+module.exports = tutorials;
+
+
+
 
 // Const tutorials = [
 // 	{
@@ -27,7 +31,7 @@ module.exports = tutorials
 
 // ]
 
-// //TODO:
+
 // const tutorials = [
 //   {
 //     link: 'https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261',

@@ -5,23 +5,22 @@ const bcryptSalt = 10;
 const users = [
 	{
 		username: "John",
-		password: bcrypt.hashSync("ruby", bcrypt.genSaltSync(bcryptSalt)),
-		description: "beginner wed developer",
+		password: bcrypt.hashSync("john", bcrypt.genSaltSync(bcryptSalt)),
+		description: "Beginner wed developer",
 
 	},
 	{
-		username: "rebecca",
+		username: "Rebecca",
 		password: bcrypt.hashSync("rebecca", bcrypt.genSaltSync(bcryptSalt)),
-		description: "always happy wed dev master",
+		description: "Always happy wed dev master",
 	},
-
 	{
-		username: 'amelia',
+		username: 'Amelia',
 		password: bcrypt.hashSync('amelia', bcrypt.genSaltSync(bcryptSalt)),
 		description: 'I love my HippoLim'
 	},
 	{
-		username: 'ruby',
+		username: 'Ruby',
 		password: bcrypt.hashSync('ruby', bcrypt.genSaltSync(bcryptSalt)),
 		description: 'Happy little me!'
 	}

@@ -1,3 +1,3 @@
-const likes = []
+const likes = [];
 
 module.exports = likes;
