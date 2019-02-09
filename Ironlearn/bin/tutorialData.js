@@ -1,3 +1,11 @@
+// TODO:
+const tutorials = []
+
+module.exports = tutorials;
+
+
+
+
 // Const tutorials = [
 // 	{
 // 		link: "https://www.youtube.com/watch?v=hnCmSXCZEpU",
@@ -23,7 +31,7 @@
 
 // ]
 
-// //TODO:
+
 // const tutorials = [
 //   {
 //     link: 'https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261',
