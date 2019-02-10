@@ -41,16 +41,13 @@ h1, h2, h3, p {
 #landing p {
   line-height: 1.7; }
 
-#feature .icon-black {
-  position: center;
+#feature .icon-blue {
   color: darkblue; }
 
-#feature .icon-blue {
-  position: center;
+#feature .icon-green {
   color: darkgreen; }
 
 #feature .icon-red {
-  position: center;
   color: red; }
 
 /*# sourceMappingURL=style.css.map */

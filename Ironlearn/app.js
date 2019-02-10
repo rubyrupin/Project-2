@@ -64,6 +64,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
+
 // 6. Enable authentication
 app.use(
   session({
@@ -78,21 +79,13 @@ app.use(flash());
 // 8. passport session
 require('./passport')(app);
 
+// 9. setup hbs variables
+require('./config/hbs-variables')(app)
+
 // . Routes
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 
-/***************************************
- * hbs helper function
- ***************************************/
-hbs.registerHelper('ifUndefined', (value, options) => {
-  if (arguments.length < 2)
-    throw new Error('Handlebars Helper ifUndefined needs 1 parameter');
-  if (typeof value !== undefined) {
-    return options.inverse(this);
-  } else {
-    return options.fn(this);
-  }
-});
+
 
 module.exports = app;
