@@ -1,10 +1,7 @@
 // TODO:
-const tutorials = []
+const tutorials = [];
 
 module.exports = tutorials;
-
-
-
 
 // Const tutorials = [
 // 	{
@@ -17,7 +14,6 @@ module.exports = tutorials;
 // 		NbOfLikes: { type: Number, default: 0 },
 // 	},
 
-
 // 	{
 // 		link: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
 // 		title: "Express.js Tutorial: RESTful APIs",
@@ -28,9 +24,7 @@ module.exports = tutorials;
 // 		NbOfLikes: { type: Number, default: 0 },
 // 	}
 
-
 // ]
-
 
 // const tutorials = [
 //   {
