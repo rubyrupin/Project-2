@@ -22,9 +22,8 @@
     <div class="d-flex flex-grow-1 align-items-center">
       <span class="w-100 d-lg-none d-block">
         <!-- hidden spacer to center brand on mobile --></span>
-        {{!-- FIXME: --}}
-      <a id="logo" class="text-white navbar-brand" href="#">
-        <img src="images/home-page/logo.svg" alt="logo" width="60" class="mr-3">
+      <a id="logo" class="text-white navbar-brand" href="/">
+        <img src="/images/home-page/logo.svg" alt="logo" width="60" class="mr-3">
         Ironlearn
       </a>
       <div class=" w-100 text-right">
@@ -42,7 +41,7 @@
           <a href="#" class="text-light nav-link mr-4">Share</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="text-light nav-link">Login/Signup</a>
+          <a href="/auth/login" class="text-light nav-link">Login/Signup</a>
         </li>
       </ul>
     </div>
@@ -50,17 +49,10 @@
   {{!-- End NAVIGATION BAR --}}
 
 
-  {{!-- <nav>
-    <a href="/">Home</a>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/signup">Signup</a>
-    <a href="/auth/logout">Logout</a>
-  </nav> --}}
-
   {{{body}}}
 
 
-  {{!-- bootstrap --}}
+  {{!-- bootstrap script --}}
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
