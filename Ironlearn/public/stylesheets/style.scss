@@ -15,10 +15,6 @@ h1, h2, h3, p {
   letter-spacing: 1px;
 }
 
-i {
-  color: var(--blue);
-}
-
 // layout
 .navbar-light .navbar-nav .nav-link {
   font-weight: 700;
@@ -46,15 +42,19 @@ i {
   }
 }
 
-// Landing Page
+// Home Page
 #landing {
-  height:80vh;
-
   h1 {
     letter-spacing: 3px;
     font-weight: 700;
   }
   p {
     line-height: 1.7;
+  }
+}
+
+#features {
+  .icon-blue {
+
   }
 }
