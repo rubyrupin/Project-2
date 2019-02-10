@@ -45,4 +45,16 @@ i {
   #landing p {
     line-height: 1.7; }
 
+#feature .icon-black {
+  position: center;
+  color: darkblue; }
+
+#feature .icon-blue {
+  position: center;
+  color: darkgreen; }
+
+#feature .icon-red {
+  position: center;
+  color: red; }
+
 /*# sourceMappingURL=style.css.map */
