@@ -1,6 +1,7 @@
 :root {
   --primary: #6c63ff;
   --dark: #505963;
+  --blue: #4264fb;
 }
 
 body {
@@ -12,6 +13,10 @@ a {
 }
 h1, h2, h3, p {
   letter-spacing: 1px;
+}
+
+i {
+  color: var(--blue);
 }
 
 // layout

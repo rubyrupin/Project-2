@@ -1,6 +1,7 @@
 :root {
   --primary: #6c63ff;
-  --dark: #505963; }
+  --dark: #505963;
+  --blue: #4264fb; }
 
 body {
   font-family: 'Roboto', sans-serif; }
@@ -10,6 +11,9 @@ a {
 
 h1, h2, h3, p {
   letter-spacing: 1px; }
+
+i {
+  color: var(--blue); }
 
 .navbar-light .navbar-nav .nav-link {
   font-weight: 700;
