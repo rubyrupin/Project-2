@@ -36,14 +36,25 @@
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
       <ul class="navbar-nav ml-auto flex-nowrap">
         <li class="nav-item">
-          <a href="#" class="text-light nav-link mr-4">Tutorials</a>
+          <a href="/tutorials/all" class="text-light nav-link mr-4">Tutorials</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="text-light nav-link mr-4">Share</a>
+          <a href="/share/add" class="text-light nav-link mr-4">Share</a>
         </li>
+
+        {{!-- Check if user is connected --}}
+        {{#if isConnected}}
+        <li class="nav-item">
+          <a href="#" class="text-light nav-link mr-4">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a href="/auth/logout" class="text-light nav-link">Logout</a>
+        </li>
+        {{else}}
         <li class="nav-item">
           <a href="/auth/login" class="text-light nav-link">Login/Signup</a>
         </li>
+        {{/if}}
       </ul>
     </div>
   </nav>
@@ -53,8 +64,9 @@
   {{{body}}}
 
   {{!-- FOOTER --}}
-  <footer></footer>
-
+  <footer>
+    <p class="p-3 mb-0 mt-5 bg-dark text-center text-white">&copy;2019 Ironlearn</p>
+  </footer>
   {{!-- bootstrap script --}}
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

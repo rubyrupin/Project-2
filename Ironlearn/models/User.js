@@ -6,7 +6,8 @@ const userSchema = new Schema(
     username: { type: String },
     password: { type: String },
     imgUrl: { type: String, default: '../public/images/profile-pic' },
-    description: { type: String }
+    description: { type: String },
+    role: { type: String, enum: ['admin', 'member'], default: 'member' }
   },
   {
     timestamps: {

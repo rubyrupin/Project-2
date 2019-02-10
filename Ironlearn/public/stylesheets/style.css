@@ -41,11 +41,11 @@ h1, h2, h3, p {
 #landing p {
   line-height: 1.7; }
 
-#feature .icon-black {
+#feature .icon-blue {
   position: center;
   color: darkblue; }
 
-#feature .icon-blue {
+#feature .icon-green {
   position: center;
   color: darkgreen; }
 

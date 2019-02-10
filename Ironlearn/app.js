@@ -78,6 +78,9 @@ app.use(flash());
 // 8. passport session
 require('./passport')(app);
 
+// 9. set hbs variables
+require('./config/hbs-variables')(app);
+
 // . Routes
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));

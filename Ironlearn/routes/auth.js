@@ -1,41 +1,59 @@
-const express = require("express");
+const express = require('express');
 const passport = require('passport');
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 const bcryptSalt = 10;
 
-
-router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+/****************************************
+ * Login Page
+ *****************************************/
+// GET '/auth/login' ==> login form
+router.get('/login', (req, res, next) => {
+  res.render('auth/login', { message: req.flash('error') });
 });
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+// POST '/auth/login'
+// success ==> redirect to profile page
+// fail ==> redirect to '/auth/login'
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/profile',
+    failureRedirect: '/auth/login',
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
 
-router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+/****************************************
+ * Sign Up Page
+ *****************************************/
+// GET '/auth/signup' ==> sign up form
+router.get('/signup', (req, res, next) => {
+  res.render('auth/signup');
 });
 
-router.post("/signup", (req, res, next) => {
+// POST '/auth/signup'
+// success ==> redirect to profile page
+// fail ==> redirect to '/auth/signup'
+router.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  // Validation
+  if (username === '' || password === '') {
+    res.render('auth/signup', { message: 'Indicate username and password' });
     return;
   }
-
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ username }, 'username', (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.render('auth/signup', { message: 'The username already exists' });
       return;
     }
 
+    // Validation success
+    //TODO:
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
@@ -44,19 +62,24 @@ router.post("/signup", (req, res, next) => {
       password: hashPass
     });
 
-    newUser.save()
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
-    })
+    newUser
+      .save()
+      .then(() => {
+        res.redirect('/profile');
+      })
+      .catch(err => {
+        res.render('auth/signup', { message: 'Something went wrong' });
+      });
   });
 });
 
-router.get("/logout", (req, res) => {
+/****************************************
+ * Logout
+ *****************************************/
+// GET '/logout'
+router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect('/');
 });
 
 module.exports = router;
