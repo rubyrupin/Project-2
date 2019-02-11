@@ -6999,6 +6999,16 @@ p {
 #landing p {
   line-height: 1.7; }
 
+<<<<<<< HEAD
+#feature .icon-blue {
+  color: darkblue; }
+
+#feature .icon-green {
+  color: darkgreen; }
+
+#feature .icon-red {
+  color: red; }
+=======
 #feature .card-title {
   font-family: 'Fahkwang', sans-serif;
   font-weight: 700;
@@ -7012,5 +7022,6 @@ p {
 
 #feature .icon-primary-dark {
   color: #473dff; }
+>>>>>>> baa230331497051cf73c2c5d1d723a88272d50d5
 
 /*# sourceMappingURL=style.css.map */
