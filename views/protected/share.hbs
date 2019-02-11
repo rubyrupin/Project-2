@@ -11,14 +11,15 @@
         {{!-- link --}}
         <div class="form-group">
           <label for="link" class="text-blue">Link:</label>
-          <input name="link" type="url" class="form-control" id="link"
-            placeholder="Copy and paste the link of the tutorial here" required>
+          <input name="link" type="url" class="form-control" id="link" placeholder="Copy and paste the link of the tutorial here"
+            required>
         </div>
 
         {{!-- title --}}
         <div class="form-group">
           <label for="title" class="text-blue">Title:</label>
-          <input name="title" type="text" class="form-control" id="title" placeholder="Enter the title of the tutorial" required>
+          <input name="title" type="text" class="form-control" id="title" placeholder="Enter the title of the tutorial"
+            required>
         </div>
 
         {{!-- description --}}
@@ -32,7 +33,7 @@
         <div class="mb-3">
           <p class="mb-1 text-blue">Categories:</p>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="html-css" value="html/css" checked>
+            <input class="form-check-input" type="checkbox" id="html-css" value="html/css" name="categories" checked>
             <label class="form-check-label" for="html-css">HTML/CSS</label>
           </div>
           <div class="form-check form-check-inline">
@@ -78,11 +79,10 @@
         {{!-- duration --}}
         <div class="form-group">
           <label for="duration" class="text-blue">Duration</label>
-          <input name="duration" type="number" class="form-control" id="duration"
-            placeholder="Time read for article / Duration of the video (in minutes)">
+          <input name="duration" type="number" class="form-control" id="duration" placeholder="Time read for article / Duration of the video (in minutes)">
         </div>
 
-        
+
 
 
         {{#if message}}
