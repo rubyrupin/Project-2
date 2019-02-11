@@ -87,7 +87,7 @@ app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/tutorials', require('./routes/tutorial'))
 app.use('/profile', require('./routes/profile'))
-app.use('/tutorials', require('./routes/tutorial'))
+
 
 
 
