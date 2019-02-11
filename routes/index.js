@@ -1,7 +1,7 @@
 const express = require('express');
-const { checkConnected } = require
-  ('../config/middlewares');
 const Tutorial = require('../models/Tutorial');
+const { checkConnected } = require('../config/middlewares');
+
 const router = express.Router();
 
 /************************************
@@ -22,26 +22,31 @@ router.get('/share', checkConnected, (req, res, next) => {
 });
 
 // POST '/share'
+// ==> create new tutorial
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
-  req.body.categories.shift()
-  console.log(req.body);
-  const { link, title, description, categories, type, duration } = req.body
+  req.body.categories.shift() // remove the empty string (hidden trick) from categories array
+
+  const {link, title, description, type, duration, categories} = req.body;
+
   Tutorial.create({
     link,
     title,
     description,
-    categories,
     type,
-    duration
+    duration,
+    categories
   })
-    .then(newPost => {
-      console.log(newPost)
+    .then(newTutorial => {
+      console.log(newTutorial);
       res.redirect('/profile')
     })
-})
+    .catch(err => {
+      console.log(err);
+      next(err);
+    })
 
 
-
+});
 
 module.exports = router;

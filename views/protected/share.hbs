@@ -2,7 +2,7 @@
 {{!-- let user share post --}}
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-9 border shadow-sm rounded p-5">
+    <div class="col-lg-7 col-md-9 border shadow-sm rounded p-5">
       <h3 class="text-center text-dark mb-4">Share</h3>
 
       {{!-- FORM STARTS HERE (gosh bootstrap -.-) --}}
@@ -26,41 +26,55 @@
         <div class="form-group">
           <label for="description" class="text-blue">Description:</label>
           <textarea class="form-control" name="description" id="description" rows="3" maxlength="120" required
-            placeholder="Tell us what is the tutorial about (max 80 characters)"></textarea>
+            placeholder="Tell us what is the tutorial about (max 120 characters)"></textarea>
         </div>
 
-        {{!-- categories --}}
+        {{!-- categories goshhhhhhhh!!!! --}}
         <div class="mb-3">
-          <p class="mb-1 text-blue">Categories:</p>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="html-css" value="html/css" name="categories" checked>
-            <label class="form-check-label" for="html-css">HTML/CSS</label>
+          <p class="mb-2 text-blue">Categories:</p>
+
+          <div class="form-check form-check-inline mb-2">
+            {{!-- hidden trick --}}
+            <input class="form-check-input" type="hidden" value="" name="categories">
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="html-css" name="categories" value="html/css" checked>
+              <label class="form-check-label" for="html-css">HTML/CSS</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="javascript" name="categories" value="javascript">
+              <label class="form-check-label" for="javascript">Javascript</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="react" name="categories" value="react">
+              <label class="form-check-label" for="react">React</label>
+            </div>
           </div>
+
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="javascript" value="javascript">
-            <label class="form-check-label" for="javascript">Javascript</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="react" value="react">
-            <label class="form-check-label" for="react">React</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="nodejs" value="nodejs">
-            <label class="form-check-label" for="nodejs">Node.js</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="express" value="express">
-            <label class="form-check-label" for="express">Express</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="mongodb" value="mongodb">
-            <label class="form-check-label" for="mongodb">MongoDB<label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="nodejs" name="categories" value="nodejs">
+              <label class="form-check-label" for="nodejs">Node.js</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="express" name="categories" value="express">
+              <label class="form-check-label" for="express">Express</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="mongodb" name="categories" value="mongodb">
+              <label class="form-check-label" for="mongodb">MongoDB<label>
+            </div>
           </div>
         </div>
+
 
         {{!-- type --}}
         <div class="mb-3">
-          <p class="mb-1 text-blue">Type:</p>
+          <p class="mb-2 text-blue">Type:</p>
           <div class="form-check-inline">
             <input class="form-check-input" type="radio" name="type" id="type" value="article" checked>
             <label class="form-check-label" for="type">
@@ -79,12 +93,11 @@
         {{!-- duration --}}
         <div class="form-group">
           <label for="duration" class="text-blue">Duration</label>
-          <input name="duration" type="number" class="form-control" id="duration" placeholder="Time read for article / Duration of the video (in minutes)">
+          <input name="duration" type="number" class="form-control" id="duration" required
+            placeholder="Time read for article / Duration of the video (in minutes)">
         </div>
 
-
-
-
+        {{!-- error message --}}
         {{#if message}}
         <div class="bg-danger rounded">
           <p class="p-2 text-center text-light">{{message}}</p>
