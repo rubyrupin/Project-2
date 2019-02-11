@@ -71,6 +71,19 @@ p {
   border-radius: 0.4rem;
 }
 
+// navbar
+.navbar-tutorial {
+  .nav-link {
+    color: #858585;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+  }
+  .active {
+    font-weight: 700;
+    border-bottom: 2px solid $primary;
+  }
+}
+
 // layout
 .navbar-light .navbar-nav .nav-link {
   font-weight: 700;
@@ -87,7 +100,7 @@ p {
   color: $primary;
 }
 
-.navbar {
+.navbar-primary {
   background-image: linear-gradient(45deg, #4298fb, #4264fb);
   padding: 10px 120px;
   #logo {

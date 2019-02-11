@@ -1,14 +1,98 @@
-<h1>Tutorial</h1>
-<div>
-	<a href="/tutorials/all">All</a>
-	<a href="/tutorials/html-css">HTML & CSS</a>
-	<a href="/tutorials/javascript">Javascript</a>
-	<a href="/tutorials/react">React</a>
-	<a href="/tutorials/nodejs">Node.js</a>
-	<a href="/tutorials/express">Express</a>
-	<a href="/tutorials/mongodb">MongoDB</a>
-</div>
+<h2 class="text-dark text-center">Tutorials</h2>
 
+<nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
+
+	{{!-- Toggle Button --}}
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+		<ul class="navbar-nav mr-auto ml-auto">
+			{{!-- all --}}
+			<li class="nav-item">
+				<a class="nav-link active" href="/tutorials/all">All<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- html/css --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/html-css">HTML/CSS<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- javascript --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/javascript">Javascript<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- nodejs --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/nodejs">Node.js<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- express --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/express">Express<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- mongodb --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/mongodb">MongoDB<span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+{{!-- Dropdown Menu --}}
+{{!-- FIXME: change path --}}
+<nav class="navbar navbar-expand-lg navbar-tutorial mt-n1">
+	<ul class="navbar-nav mr-auto ml-auto">
+		{{!-- type --}}
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">
+				Type
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="#">Article</a>
+				<a class="dropdown-item" href="#">Video</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Both</a>
+			</div>
+		</li>
+		{{!-- sort --}}
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">
+				Sort duration
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="#">Ascending</a>
+				<a class="dropdown-item" href="#">Descending</a>
+			</div>
+		</li>
+	</ul>
+</nav>
+
+
+<section class="container rounded p-3">
+	<div class="row">
+
+		{{#each tutorials}}
+		<div class="col-3-lg col-6-md card m-2 pt-4 pb-4 shadow-sm">
+			{{!-- FIXME: --}}
+			<img src="..." class="card-img-top" alt="...">
+
+			<div class="card-body text-center">
+				<h5 class="card-title text-dark">Learn</h5>
+				<p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of
+					the card's
+					content.
+				</p>
+				<a href="#" class="btn btn-outline-primary">Go somewhere</a>
+			</div>
+		</div>
+		{{/each}}
+
+	</div>
+</section>
 
 {{#each tutorials}}
 <div>
