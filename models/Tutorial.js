@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const tutorialSchema = new Schema(
   {
-    categories: { type: [String], enum: ['html-css', 'javascript', 'react', 'nodejs', 'express', 'mongodb'] },
+    categories: { type: [String], enum: ['html/css', 'javascript', 'react', 'nodejs', 'express', 'mongodb'] },
     type: { type: String, enum: ['article', 'video'] },
     link: { type: String, required: true },
     title: { type: String, required: true },

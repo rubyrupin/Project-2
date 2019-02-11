@@ -1,6 +1,6 @@
 module.exports = {
   // check if user is connected
-  checkConnected: function(req, res, next) {
+  checkConnected: function (req, res, next) {
     if (req.user) {
       next();
     } else {
