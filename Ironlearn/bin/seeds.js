@@ -19,7 +19,7 @@ mongoose
   });
 
 // Insert 'fake' data
-Promise.all([User.deleteMany({}), Tutorial.deleteMany({}),Like.deleteMany({})])
+Promise.all([User.deleteMany({}), Tutorial.deleteMany({}), Like.deleteMany({})])
   .then(() => {
     return Promise.all([
       User.create(userData),
