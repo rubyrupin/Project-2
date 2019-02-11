@@ -1,3 +1,6 @@
+{{!-- auth/signup --}}
+{{!-- Sign Up Page --}}
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-9 border shadow-sm rounded p-5">
@@ -18,9 +21,10 @@
 
         <div class="form-group">
           <label for="description" class="text-dark">Description</label>
-          <textarea class="form-control" name="description" id="description" cols="30" rows="3" placeholder="Tell us about yourself... (optional)"></textarea>
+          <textarea class="form-control" name="description" id="description" cols="30" rows="3"
+            placeholder="Tell us about yourself... (optional)"></textarea>
         </div>
-        
+
         {{!-- error message --}}
         {{#if message}}
         <div class="bg-danger rounded">

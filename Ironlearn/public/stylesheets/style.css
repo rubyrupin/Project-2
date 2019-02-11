@@ -6972,9 +6972,6 @@ p {
   border: 1px solid rgba(125, 138, 153, 0.1);
   border-radius: 0.4rem; }
 
-.bg-danger {
-  background-image: linear-gradient(45deg, #ff6122, #dc3545); }
-
 .navbar-light .navbar-nav .nav-link {
   font-weight: 700;
   font-size: 14px;
