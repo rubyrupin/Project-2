@@ -3,6 +3,7 @@ const User = require('../models/User');
 const userData = require('./userData');
 
 
+
 // Connect to mongodb ironlearn database
 mongoose
   .connect('mongodb://localhost/ironlearn', { useNewUrlParser: true })
@@ -15,7 +16,9 @@ mongoose
     console.error('Error connecting to mongo', err);
   });
 
-// Insert 'fake' data
+
+
+// Insert 'fake' user
 User.deleteMany({})
   .then(() => {
     return User.create(userData)
