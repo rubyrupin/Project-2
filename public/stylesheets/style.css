@@ -6937,6 +6937,9 @@ h6,
 p {
   letter-spacing: 1px; }
 
+.text-blue {
+  color: #4264fb; }
+
 .btn {
   transition: all 0.3s;
   border-radius: 0.5rem; }

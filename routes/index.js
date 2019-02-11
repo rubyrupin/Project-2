@@ -12,10 +12,10 @@ router.get('/', (req, res, next) => {
 });
 
 /************************************
- * Share Link
+ * Share Link (protected)
  ************************************/
 // GET '/share'
-// ==> render share post form (protected)
+// ==> render share post form
 router.get('/share', checkConnected, (req, res, next) => {
   res.render('protected/share');
 });
@@ -23,7 +23,7 @@ router.get('/share', checkConnected, (req, res, next) => {
 // POST '/share'
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
-  console.log(req.user);
+  console.log(req.body);
   res.redirect('/profile');
 });
 
