@@ -1,4 +1,6 @@
 const express = require('express');
+const { checkConnected } = require('../config/middlewares');
+
 const router = express.Router();
 const { checkConnected } = require("../config/middlewares");
 /************************************

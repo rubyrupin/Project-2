@@ -1,26 +1,34 @@
 const express = require('express');
-const Tutorial = require('../models/Tutorial')
+const Tutorial = require('../models/Tutorial');
 const router = express.Router();
 
-// all
+/***************************************
+ * Show all tutorials
+ ***************************************/
 router.get('/all', (req, res, next) => {
-	Tutorial.find()
-		.then(tutorials => {
-			res.render('tutorial/all', { tutorials })
-		})
-		.catch(err => next(err))
+  Tutorial.find()
+    .populate('_userPost') // Test
+    .then(tutorials => {
+      res.render('tutorial/all', { tutorials });
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
+});
 
-})
-
-//html-css
+/***************************************
+ * HTML & CSS
+ ***************************************/
 router.get('/html-css', (req, res, next) => {
-	Tutorial.find({ categories: 'html/css' })
-		.then(htmlCss => {
-			//render hbs page and give it the htmlCss data
-			res.render('tutorial/html-css', { htmlCss })
-		})
-		.catch(err => next(err))
-})
-
+  Tutorial.find({ categories: 'html/css' })
+    .then(htmlCss => {
+      res.render('tutorial/html-css', { htmlCss });
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
+});
 
 module.exports = router;

@@ -1,7 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 const User = require('../models/User');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs'); 
+
 
 const router = express.Router();
 const bcryptSalt = 10;
@@ -17,11 +18,10 @@ router.get('/login', (req, res, next) => {
 // POST '/auth/login'
 // success ==> redirect to profile page
 // fail ==> redirect to '/auth/login'
-// TODO: find user id
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/profile', // FIXME:
+    successRedirect: '/profile',
     failureRedirect: '/auth/login',
     failureFlash: true,
     passReqToCallback: true
