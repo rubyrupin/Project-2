@@ -42,7 +42,9 @@ router.get('/signup', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  // Validation
+  const description = req.body.description;
+
+  // Validation Fail
   if (username === '' || password === '') {
     res.render('auth/signup', { message: 'Indicate username and password' });
     return;
@@ -54,23 +56,41 @@ router.post('/signup', (req, res, next) => {
     }
 
     // Validation success
-    //TODO: automatically login
+    //TODO: add description, automatically login
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const newUser = new User({
+    const newUser = {
       username,
-      password: hashPass
-    });
+      password: hashPass,
+      description
+    };
 
-    newUser
-      .save()
-      .then(() => {
-        res.redirect('/profile');
+    User.create(newUser)
+      .then(userCreated => {
+        console.log(userCreated);
+        res.redirect('/');
       })
       .catch(err => {
-        res.render('auth/signup', { message: 'Something went wrong' });
+        console.log(err);
+        res.render('/auth/signup', {
+          message: 'Sorry, something went wrong. Please try again later.'
+        });
       });
+
+    // const newUser = new User({
+    //   username,
+    //   password: hashPass
+    // });
+
+    // newUser
+    //   .save()
+    //   .then(() => {
+    //     res.redirect('/profile');
+    //   })
+    //   .catch(err => {
+    //     res.render('auth/signup', { message: 'Something went wrong' });
+    //   });
   });
 });
 

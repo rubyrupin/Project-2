@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    username: { type: String },
-    password: { type: String },
-    imgUrl: { type: String, default: '../public/images/profile-pic' },
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    imgUrl: { type: String, default: 'images/profile-pic' },
     description: { type: String },
     role: { type: String, enum: ['admin', 'member'], default: 'member' }
   },
