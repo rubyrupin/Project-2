@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
-const Tutorial = require('../models/Tutorial');
-const Like = require('../models/Like');
 const userData = require('./userData');
-const tutorialData = require('./tutorialData');
-const likeData = require('./likeData');
+
 
 // Connect to mongodb ironlearn database
 mongoose
@@ -19,18 +16,12 @@ mongoose
   });
 
 // Insert 'fake' data
-Promise.all([User.deleteMany({}), Tutorial.deleteMany({}), Like.deleteMany({})])
+User.deleteMany({})
   .then(() => {
-    return Promise.all([
-      User.create(userData),
-      Tutorial.create(tutorialData),
-      Like.create(likeData)
-    ]);
+    return User.create(userData)
   })
   .then(values => {
-    console.log(`${values[0].length} users created.`);
-    console.log(`${values[1].length} tutorials created.`);
-    //console.log(`${values[2].length} likes created.`);
+    console.log(`${values.length} users created.`);
   })
   .then(() => {
     mongoose.disconnect();

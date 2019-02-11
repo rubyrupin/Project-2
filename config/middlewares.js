@@ -4,7 +4,7 @@ module.exports = {
     if (req.user) {
       next();
     } else {
-      res.render('/auth/login');
+      res.render('auth/login');
     }
   }
 }

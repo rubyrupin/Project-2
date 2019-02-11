@@ -9,5 +9,10 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+/************************************
+ * Share Link
+************************************/
+// GET '/share'
+
 
 module.exports = router;
