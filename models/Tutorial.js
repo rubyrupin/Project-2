@@ -9,8 +9,8 @@ const tutorialSchema = new Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     duration: { type: Number, required: true },
-    NbOfLikes: { type: Number, default: 0 },
-    _userPost: {
+    nbOfLikes: { type: Number, default: 0 },
+    _creator: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     }
