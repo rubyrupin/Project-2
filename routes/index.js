@@ -26,8 +26,7 @@ router.get('/share', checkConnected, (req, res, next) => {
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
   req.body.categories.shift() // remove the empty string (hidden trick) from categories array
-
-  const {link, title, description, type, duration, categories} = req.body;
+  const { link, title, description, type, duration, categories } = req.body;
 
   Tutorial.create({
     link,
@@ -35,7 +34,8 @@ router.post('/share', (req, res, next) => {
     description,
     type,
     duration,
-    categories
+    categories,
+    _creator: req.user._id
   })
     .then(newTutorial => {
       console.log(newTutorial);
