@@ -17,10 +17,11 @@ router.get('/login', (req, res, next) => {
 // POST '/auth/login'
 // success ==> redirect to profile page
 // fail ==> redirect to '/auth/login'
+// TODO: find user id
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/profile',
+    successRedirect: '/profile', // FIXME:
     failureRedirect: '/auth/login',
     failureFlash: true,
     passReqToCallback: true
@@ -53,7 +54,7 @@ router.post('/signup', (req, res, next) => {
     }
 
     // Validation success
-    //TODO:
+    //TODO: automatically login
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
