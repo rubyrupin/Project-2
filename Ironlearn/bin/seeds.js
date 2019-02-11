@@ -29,7 +29,7 @@ Promise.all([User.deleteMany({}), Tutorial.deleteMany({}), Like.deleteMany({})])
   })
   .then(values => {
     console.log(`${values[0].length} users created.`);
-    //console.log(`${values[1].length} tutorials created.`);
+    console.log(`${values[1].length} tutorials created.`);
     //console.log(`${values[2].length} likes created.`);
   })
   .then(() => {

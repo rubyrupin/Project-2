@@ -5,9 +5,10 @@ const router = express.Router();
  * PROFILE PAGE
  ************************************/
 // GET '/profile'
-// TODO: find user id
-router.get('/', (req, res, next) => {
-  res.render('profile/index');
+// TODO: protect the route
+router.get('/',  (req, res, next) => {
+
+  res.render('profile/index', { user: req.user });
 });
 
 module.exports = router;
