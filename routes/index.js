@@ -23,6 +23,7 @@ router.get('/share', checkConnected, (req, res, next) => {
 // POST '/share'
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
+  
   console.log(req.body);
   res.redirect('/profile');
 });

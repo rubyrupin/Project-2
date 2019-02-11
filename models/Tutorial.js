@@ -3,14 +3,17 @@ const Schema = mongoose.Schema;
 
 const tutorialSchema = new Schema(
   {
-    categories: { type: [String], enum: ['html/css', 'javascript', 'react', 'nodejs', 'express', 'mongodb'] },
+    categories: {
+      type: [String],
+      enum: ['html/css', 'javascript', 'react', 'nodejs', 'express', 'mongodb']
+    },
     type: { type: String, enum: ['article', 'video'] },
     link: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     duration: { type: Number, required: true },
-    NbOfLikes: { type: Number, default: 0 },
-    _userPost: {
+    nbOfLikes: { type: Number, default: 0 },
+    _creator: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     }

@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const likeSchema = new Schema(
   {
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    likedTutorial: { type: Schema.Types.ObjectId, ref: 'Tutorial' }
+    _user: { type: Schema.Types.ObjectId, ref: 'User' },
+    _tutorial: { type: Schema.Types.ObjectId, ref: 'Tutorial' }
   },
   {
     timestamps: {
