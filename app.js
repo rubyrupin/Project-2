@@ -86,6 +86,7 @@ require('./config/hbs-variables')(app);
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/profile', require('./routes/profile'))
+app.use('/tutorials', require('./routes/tutorial'))
 
 
 

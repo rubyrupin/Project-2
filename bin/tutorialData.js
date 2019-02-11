@@ -2,7 +2,7 @@
 
 const tutorials = [
 	{
-		categories: 'html-css',
+		categories: 'html/css',
 		type: 'video',
 		link: "https://www.youtube.com/watch?v=hnCmSXCZEpU",
 		title: "Bootstrap 4 in 2018-Free Crash Course",
@@ -13,8 +13,8 @@ const tutorials = [
 	},
 
 	{
-		categories: 'html-css',
-		types: 'video',
+		categories: 'html/css',
+		type: 'video',
 		link: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
 		title: "Express.js Tutorial: RESTful APIs",
 		description: "Excellent video on API",
@@ -24,7 +24,7 @@ const tutorials = [
 
 	{
 		categories: 'javascript',
-		types: 'article',
+		type: 'article',
 		link: "https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261",
 		title: "Master the JavaScript Interview: What is a Promise?",
 		description: "Master the JavaScript Interview” is a series of posts designed to prepare candidates for common questions they are likely to encounter when applying for a mid to senior- level JavaScript position.These are questions I frequently use in real interviews",
@@ -34,7 +34,7 @@ const tutorials = [
 
 	{
 		categories: 'javascript',
-		types: 'video',
+		type: 'video',
 		link: 'https://www.youtube.com/watch?v=rRgD1yVwIvE&t=618s',
 		title: 'JavaScript Higher Order Functions & Arrays',
 		description: 'Good material to review: ForEach, map, filter, reduce and sort.',
@@ -44,8 +44,8 @@ const tutorials = [
 	},
 
 	{
-		categories: 'html-css',
-		types: 'article',
+		categories: 'html/css',
+		type: 'article',
 		link: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
 		title: 'A Complete Guide to Flexbox',
 		description: 'Bible for felxbox, easy to understand',
@@ -56,7 +56,7 @@ const tutorials = [
 
 	{
 		categories: 'react',
-		types: 'video',
+		type: 'video',
 		link: 'https://www.youtube.com/watch?v=Ke90Tje7VS0',
 		title: 'Learn React - React Crash Course 2018 with Mosh',
 		description: 'Great demonstration and explanation with examples.',
@@ -67,7 +67,7 @@ const tutorials = [
 
 	{
 		categories: 'react',
-		types: 'article',
+		type: 'article',
 		link: 'https://devhints.io/react',
 		title: 'React Cheatsheet',
 		description: 'React is a JavaScript library for building user interfaces. This guide targets React v15 to v16.',
@@ -78,7 +78,7 @@ const tutorials = [
 
 	{
 		categories: 'nodejs',
-		types: 'article',
+		type: 'article',
 		link: 'http://overapi.com/nodejs',
 		title: 'nodejs Cheatsheet',
 		description: 'handy cheatsheet with the links to official nodejs documentation',
@@ -88,7 +88,7 @@ const tutorials = [
 	},
 	{
 		categories: 'nodejs',
-		types: 'video',
+		type: 'video',
 		link: 'https://www.youtube.com/watch?v=TlB_eWDSMt4&t=8s',
 		title: 'Node.js Tutorial for Beginners: Learn Node in 1 Hour | Mosh',
 		description: 'Another Mosh video on node JS',
@@ -98,7 +98,7 @@ const tutorials = [
 	},
 	{
 		categories: 'express',
-		types: 'article',
+		type: 'article',
 		link: 'https://jilles.me/express-routing-advanced-techniques/',
 		title: 'Express Routing - Advanced Techniques',
 		description: 'More advanced techniques that you need to know if you want to build a larger or more complex application.',
@@ -109,7 +109,7 @@ const tutorials = [
 
 	{
 		categories: 'express',
-		types: 'video',
+		type: 'video',
 		link: 'https://www.youtube.com/watch?v=26wm0IQsDCs',
 		title: 'ExpressJS Tutorial 23: Advance Routing - Part 1',
 		description: 'Express on Routing',
@@ -120,7 +120,7 @@ const tutorials = [
 
 	{
 		categories: 'mongodb',
-		types: 'article',
+		type: 'article',
 		link: 'https://www.tutorialspoint.com/mongodb/mongodb_advanced_indexing.htm',
 		title: 'Tutorial point - Mongodb documentation',
 		description: 'You can find all the things you need here for Mongodb with good explanation and syntax.',
@@ -130,7 +130,7 @@ const tutorials = [
 
 	{
 		categories: 'mongodb',
-		types: 'video',
+		type: 'video',
 		link: 'https://www.youtube.com/watch?v=pWbMrx5rVBE',
 		title: 'MongoDB In 30 Minutes',
 		description: 'A quick intro on mangodb',
@@ -140,7 +140,7 @@ const tutorials = [
 
 	{
 		categories: 'javascript',
-		types: 'video',
+		type: 'video',
 		link: 'https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=1071s',
 		title: 'What the heck is the event loop anyway?',
 		description: 'With some handy visualisations, and fun hacks, let’s get an intuitive understanding of what happens when JavaScript runs.',
