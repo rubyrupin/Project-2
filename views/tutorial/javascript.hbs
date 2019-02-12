@@ -1,22 +1,110 @@
-<h1>Javascript</h1>
-<div>
-	<a href="/tutorials/all"> All</a>
-	<a href="/tutorials/html-css"> HTML & CSS</a>
-	<a href="/tutorials/javascript"> Javascript</a>
-	<a href="/tutorials/react"> React</a>
-	<a href="/tutorials/nodejs"> Node.js</a>
-	<a href="/tutorials/express"> Express</a>
-	<a href="/tutorials/mongodb"> MongoDB</a>
+<h2 class="text-dark text-center">Tutorials</h2>
+
+{{!-- category nav --}}
+<nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
+
+	{{!-- Toggle Button --}}
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+		<ul class="navbar-nav mr-auto ml-auto">
+			{{!-- all --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/all">All<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- html/css --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/html-css">HTML/CSS<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- javascript --}}
+			<li class="nav-item">
+				<a class="nav-link active" href="/tutorials/javascript">Javascript<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- nodejs --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/nodejs">Node.js<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- express --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/express">Express<span class="sr-only">(current)</span></a>
+			</li>
+			{{!-- mongodb --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/mongodb">MongoDB<span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+{{!-- Show all tutorials --}}
+<div id="tutorials" class="d-flex flex-wrap justify-content-center mt-5">
+
+	{{#each javascript}}
+	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
+		{{!-- FIXME: --}}
+
+		{{!-- title --}}
+		<div>
+			<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
+			<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
+		</div>
+
+		<div class="card-body">
+			{{!-- description --}}
+			<p class="card-text text-secondary">{{this.description}}
+			</p>
+			{{!-- category, type and duration --}}
+			<p class="text-secondary-light">
+				{{this.category}} | {{this.type}} | {{this.duration}} min
+			</p>
+
+			{{!-- creator --}}
+			{{!-- TODO: link to creator page --}}
+			<p class="text-secondary">
+				<a class="creator" href="#">{{this._creator.username}}</a> share this
+			</p>
+
+			<div class="d-flex align-items-center justify-content-between mt-3">
+				<div>
+					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+				</div>
+
+				<div class="d-flex align-items-center">
+					<i class="d-block text-secondary-light fas fa-heart fa-2x like-button" data-tutorial-id="{{this._id}}"></i>
+
+					<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/each}}
 </div>
 
+{{!-- Script --}}
+<script>
+	let $likeButtons = [...document.querySelectorAll(".like-button")];
 
-{{#each javascript}}
-<div>
-	<p>{{this.title}} </p>
-	<p>{{this.description}}</p>
-	<p>{{this.type}}</p>
-	<p>{{this.duration}}</p>
-	<p>{{this.categories}}</p>
-	<p>{{this.NbOfLikes}}</p>
-</div>
-{{/each}}
+	$likeButtons.forEach(($likeButton) => {
+		$likeButton.onclick = function () {
+
+		}
+	})
+
+	for (let i = 0; i < $likeButtons.length; i++) {
+		$likeButtons[i].onclick = function () {
+			console.log("The button was cliked", i)
+			this.className = "d-block text-primary-light fas fa-heart fa-2x like-button"
+			let _tutorial = this.getAttribute('data-tutorial-id')
+			// axios calls "POST /api/likes" and send req.body._tutorial
+			axios.post('/api/likes', { _tutorial })
+				.then(response => {
+					console.log('The post was liked')
+				})
+				.catch(err => console.log('Error', err))
+		}
+	}
+</script>

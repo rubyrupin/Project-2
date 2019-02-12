@@ -21,7 +21,7 @@ router.get('/all', (req, res, next) => {
  * HTML & CSS
  ***************************************/
 router.get('/html-css', (req, res, next) => {
-	Tutorial.find({ categories: 'html/css' })
+	Tutorial.find({ category: 'html/css' })
 		.then(htmlCss => {
 			res.render('tutorial/html-css', { htmlCss });
 		})
@@ -36,7 +36,7 @@ router.get('/html-css', (req, res, next) => {
  * Javascript
  ***************************************/
 router.get('/javascript', (req, res, next) => {
-	Tutorial.find({ categories: 'javascript' })
+	Tutorial.find({ category: 'javascript' })
 		.then(javascript => {
 			res.render('tutorial/javascript', { javascript });
 		})
@@ -50,7 +50,7 @@ router.get('/javascript', (req, res, next) => {
  * React
  ***************************************/
 router.get('/react', (req, res, next) => {
-	Tutorial.find({ categories: 'react' })
+	Tutorial.find({ category: 'react' })
 		.then(react => {
 			res.render('tutorial/react', { react });
 		})
@@ -64,7 +64,7 @@ router.get('/react', (req, res, next) => {
  * Nodejs
  ***************************************/
 router.get('/nodejs', (req, res, next) => {
-	Tutorial.find({ categories: 'nodejs' })
+	Tutorial.find({ category: 'nodejs' })
 		.then(nodejs => {
 			res.render('tutorial/nodejs', { nodejs });
 		})
@@ -78,7 +78,7 @@ router.get('/nodejs', (req, res, next) => {
  * Express
  ***************************************/
 router.get('/express', (req, res, next) => {
-	Tutorial.find({ categories: 'express' })
+	Tutorial.find({ category: 'express' })
 		.then(express => {
 			res.render('tutorial/express', { express });
 		})
@@ -92,7 +92,7 @@ router.get('/express', (req, res, next) => {
  * Mongodb
  ***************************************/
 router.get('/mongodb', (req, res, next) => {
-	Tutorial.find({ categories: 'mongodb' })
+	Tutorial.find({ category: 'mongodb' })
 		.then(mongodb => {
 			res.render('tutorial/mongodb', { mongodb });
 		})
