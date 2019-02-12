@@ -11,7 +11,6 @@ $red: #e62153;
 $red-light: #fa688d;
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-@import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -44,6 +43,7 @@ h6 {
 .text-secondary-light {
   color: $secondary-light;
 }
+.text-red
 
 // Button
 .btn {
@@ -152,7 +152,15 @@ h6 {
 // Tutorials
 #tutorials {
   h4 {
-font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     position: absolute;
+  }
+  .creator {
+    font-family: 'Fahkwang', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .like-button {
+    cursor: pointer;
   }
 }
