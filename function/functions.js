@@ -1,5 +1,5 @@
 module.exports = {
-  assignImg: function(category) {
+  assignImg: function (category) {
     const rootPath = '/images/tutorials-page/';
     let imgFile = '';
 
