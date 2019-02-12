@@ -1,17 +1,36 @@
 {{!-- profile/index --}}
 {{!-- Profile Page --}}
-
 <div class="container"></div>
+<h2 class='text-center my-4'>Welcome Back {{user.username}}</h2>
+
 <div class="row">
-	<div class="col-sm">
-		<img src="images/home-page/landing7.svg" alt="landing page photo" width="50%">
+	<div class="col-sm-4 offset-2 order-sm-first">
+		<img class="img-fluid-rounded-circle" src="images/home-page/landing7.svg" alt="landing page photo" width="50%">
 		<br>
-		one of the three columns
 	</div>
 	<div class="col-sm">
-		username: {{user.username}}
-		<br>
-		description: {{user.description}}
+		<p><strong>username:</strong>{{user.username}}
+			<br>
+			<p><strong>description:</strong>{{user.description}}
 	</div>
 </div>
 <hr>
+
+{{#each allCreated }}
+<div class="card p-0 pb-4 col-lg-3 m-lg-3 m-md-1  shadow-sm">
+	{{!-- FIXME: --}}
+	<img src="/images/tutorials-page/mongodb.svg" class="card-img-top" alt="html/css">
+
+	<div class="card-body text-center">
+		<h5 class="card-title text-dark">{{this.title}}</h5>
+		<p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of
+			the card's
+			content.
+		</p>
+		<a href="#" class="btn btn-outline-primary">Go somewhere</a>
+	</div>
+</div>
+{{/each}}
+
+</div>
+</section>
