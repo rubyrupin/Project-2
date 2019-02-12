@@ -1,4 +1,5 @@
 {{!-- 'tutorial/all' --}}
+{{!-- show all tutorials --}}
 
 <h2 class="text-dark text-center">Tutorials</h2>
 
@@ -44,52 +45,70 @@
 </nav>
 
 {{!-- Show all tutorials --}}
-{{!-- TODO: filter article and sort time --}}
-
 <div id="tutorials" class="d-flex flex-wrap justify-content-center mt-5">
 
 	{{#each tutorials}}
 	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 		{{!-- FIXME: --}}
 
-		<div class="w-100 reference">
+		{{!-- title --}}
+		<div>
 			<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
-			<img src="{{this.imgUrl}}" class="card-img-top" alt="html/css w-50">
+			<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
 		</div>
 
 		<div class="card-body">
+			{{!-- description --}}
 			<p class="card-text text-secondary">{{this.description}}
 			</p>
-			<div>
-				<span class="d-block text-primary-dark m-b-0">{{this.type}}</span>
-				<span class="text-primary-light">{{this.duration}} min</span>
-			</div>
+			{{!-- category, type and duration --}}
+			<p class="text-secondary-light">
+				{{this.category}} | {{this.type}} | {{this.duration}} min
+			</p>
+
+			{{!-- creator --}}
+			{{!-- TODO: link to creator page  --}}
+			<p class="text-secondary">
+				<a class="creator" href="#">{{this._creator.username}}</a> share this
+			</p>
 
 			<div class="d-flex align-items-center justify-content-between mt-3">
 				<div>
-					<a href="{{this.link}}" target="_blank" class="btn btn-outline-primary">Learn now</a>
+					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 				</div>
 
-				{{!-- FIXME: fix form method --}}
-				<form action="/tutorials/all" method="GET" class="d-inline">
-					<div class="d-flex align-items-center">
-						<button type="submit">
-							<a href="
-							"><i class="d-block text-secondary-light fas fa-heart fa-2x"></i>
-							</a>
-							
-						</button>
+				<div class="d-flex align-items-center">
+					<i class="d-block text-secondary-light fas fa-heart fa-2x like-button" data-tutorial-id="{{this._id}}"></i>
 
-						<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
-					</div>
-
-				</form>
+					<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
+				</div>
 			</div>
-
-
-
 		</div>
 	</div>
 	{{/each}}
-
 </div>
+
+{{!-- Script --}}
+<script>
+	let $likeButtons = [...document.querySelectorAll(".like-button")];
+
+	$likeButtons.forEach(($likeButton) => {
+		$likeButton.onclick = function () {
+			
+		}
+	})
+
+	for (let i = 0; i < $likeButtons.length; i++) {
+		$likeButtons[i].onclick = function () {
+			console.log("The button was cliked", i)
+			this.className = "d-block text-primary-light fas fa-heart fa-2x like-button"
+			let _tutorial = this.getAttribute('data-tutorial-id')
+			// axios calls "POST /api/likes" and send req.body._tutorial
+			axios.post('/api/likes', { _tutorial })
+				.then(response => {
+					console.log('The post was liked')
+				})
+				.catch(err => console.log('Error', err))
+		}
+	}
+</script>

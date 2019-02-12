@@ -7,7 +7,7 @@ const router = express.Router();
  ***************************************/
 router.get('/all', (req, res, next) => {
 	Tutorial.find()
-		.populate('_userPost') // Test
+		.populate('_creator') // creator
 		.then(tutorials => {
 			res.render('tutorial/all', { tutorials });
 		})

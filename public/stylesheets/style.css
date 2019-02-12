@@ -4,7 +4,6 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css?family=Satisfy");
 :root {
   --blue: #4264fb;
   --indigo: #6610f2;
@@ -6945,7 +6944,7 @@ h1, h2, h3, h4, h5, h6 {
 .text-secondary-light {
   color: #9ba9b4; }
 
-.btn {
+.text-red .btn {
   transition: all 0.3s;
   border-radius: 0.5rem; }
 
@@ -7030,5 +7029,13 @@ h1, h2, h3, h4, h5, h6 {
 #tutorials h4 {
   font-family: 'Times New Roman', Times, serif;
   position: absolute; }
+
+#tutorials .creator {
+  font-family: 'Fahkwang', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px; }
+
+#tutorials .like-button {
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
