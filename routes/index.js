@@ -1,6 +1,7 @@
 const express = require('express');
 const Tutorial = require('../models/Tutorial');
 const { checkConnected } = require('../config/middlewares');
+const { assignImg } = require('../function/functions');
 
 const router = express.Router();
 
@@ -25,11 +26,12 @@ router.get('/share', checkConnected, (req, res, next) => {
 // ==> create new tutorial
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
-  // TODO: assign imgUrl
-
   const { link, title, description, type, duration, category } = req.body;
 
+  const imgUrl = assignImg(category);
+
   Tutorial.create({
+    imgUrl,
     link,
     title,
     description,
@@ -39,6 +41,8 @@ router.post('/share', (req, res, next) => {
     _creator: req.user._id
   })
     .then(newTutorial => {
+      console.log('new tutorial created');
+      console.log(newTutorial);
       res.render('protected/share-success');
     })
     .catch(err => {
