@@ -11,6 +11,7 @@ $red: #e62153;
 $red-light: #fa688d;
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -43,7 +44,6 @@ h6 {
 .text-secondary-light {
   color: $secondary-light;
 }
-
 
 // Button
 .btn {
@@ -152,8 +152,7 @@ h6 {
 // Tutorials
 #tutorials {
   h4 {
-    font-family: 'Fahkwang', sans-serif;
+font-family: 'Times New Roman', Times, serif;
     position: absolute;
-    top: 5%;
   }
 }
