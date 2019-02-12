@@ -27,7 +27,7 @@ const tutorials = [
 		type: 'article',
 		link: "https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261",
 		title: "Master the JavaScript Interview: What is a Promise?",
-		description: "Master the JavaScript Interview” is a series of posts designed to prepare candidates for common questions they are likely to encounter when applying for a mid to senior- level JavaScript position.These are questions I frequently use in real interviews",
+		description: "Master the JavaScript Interview” is a series of posts designed to prepare candidates for common questions they are likely to encounter when applying for a mid to senior- level JavaScript position.",
 		duration: 11,
 		_userPost: "5c60485dbc6cec382ba93cc0"
 	},
@@ -48,7 +48,7 @@ const tutorials = [
 		type: 'article',
 		link: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
 		title: 'A Complete Guide to Flexbox',
-		description: 'Bible for felxbox, easy to understand',
+		description: 'Bible for Flex, easy to understand',
 		duration: 30,
 		_userPost: '5c60515c91408c40d57919f8',
 
