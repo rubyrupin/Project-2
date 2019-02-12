@@ -25,7 +25,7 @@ router.get('/share', checkConnected, (req, res, next) => {
 // ==> create new tutorial
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
-  // req.body.categories.shift(); // remove the empty string (hidden trick) from categories array
+  // TODO: assign imgUrl
 
   const { link, title, description, type, duration, category } = req.body;
 
