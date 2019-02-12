@@ -6955,7 +6955,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline-red:hover {
   color: #fff;
   border-color: #fff;
-  background-image: linear-gradient(45deg, #fa7596, #e62153); }
+  background-image: linear-gradient(45deg, #fa688d, #e62153); }
 
 .card {
   border: 1px solid rgba(125, 138, 153, 0.1);

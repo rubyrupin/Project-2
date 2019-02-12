@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 });
 
 /************************************
- * Share Link (protected)
+ * Share Tutorial (protected)
  ************************************/
 // GET '/share'
 // ==> render share post form
@@ -46,5 +46,12 @@ router.post('/share', (req, res, next) => {
       next(err);
     });
 });
+
+/************************************
+ * //TODO: delete this after testing
+ ************************************/
+// router.get('/share/success', (req, res, next) => {
+//   res.render('protected/share-success');
+// })
 
 module.exports = router;
