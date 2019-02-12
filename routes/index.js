@@ -25,6 +25,7 @@ router.get('/share', checkConnected, (req, res, next) => {
 // ==> create new tutorial
 // ==> redirect to profile when success
 router.post('/share', (req, res, next) => {
+  ifreq.body.categories
   req.body.categories.shift(); // remove the empty string (hidden trick) from categories array
 
   const { link, title, description, type, duration, categories } = req.body;
