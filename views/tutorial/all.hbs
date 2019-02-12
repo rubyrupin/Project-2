@@ -70,9 +70,16 @@
 					<a href="{{this.link}}" target="_blank" class="btn btn-outline-primary">Learn now</a>
 				</div>
 
-				<form action="/tutorials/all" class="d-inline">
+				{{!-- FIXME: fix form method --}}
+				<form action="/tutorials/all" method="GET" class="d-inline">
 					<div class="d-flex align-items-center">
-						<i class="d-block text-secondary-light fas fa-heart fa-2x"></i>
+						<button type="submit">
+							<a href="
+							"><i class="d-block text-secondary-light fas fa-heart fa-2x"></i>
+							</a>
+							
+						</button>
+
 						<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
 					</div>
 
