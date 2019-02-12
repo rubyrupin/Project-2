@@ -1,7 +1,7 @@
 const express = require('express');
 const Tutorial = require('../models/Tutorial');
 const { checkConnected } = require('../config/middlewares');
-const { assignImg } = require('../function/functions');
+const { assignImg, assignColor } = require('../function/functions');
 
 const router = express.Router();
 
@@ -29,9 +29,11 @@ router.post('/share', (req, res, next) => {
   const { link, title, description, type, duration, category } = req.body;
 
   const imgUrl = assignImg(category);
+  const color = assignColor(category);
 
   Tutorial.create({
     imgUrl,
+    color,
     link,
     title,
     description,

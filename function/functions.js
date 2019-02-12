@@ -25,5 +25,18 @@ module.exports = {
     }
 
     return rootPath + imgFile;
+  },
+
+  assignColor: function assignColor(category) {
+    switch (category) {
+      case 'html/css':
+      case 'react':
+      case 'mongodb':
+      case 'express':
+        return 'text-white';
+      case 'javascript':
+      case 'nodejs':
+        return 'text-black';
+    }
   }
 };

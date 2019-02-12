@@ -2,6 +2,7 @@ $primary: #6c63ff;
 $primary-light: #9891fd;
 $primary-dark: #473dff;
 $primary-super-dark: #3830cc;
+$secondary-light: #9ba9b4;
 $dark: #2c4058;
 $blue-light: #4298fb;
 $blue: #4264fb;
@@ -33,10 +34,26 @@ h6 {
 .text-blue {
   color: $blue;
 }
+.text-primary-light {
+  color: $primary-light;
+}
+.text-primary-dark {
+  color: $primary-dark;
+}
+.text-secondary-light {
+  color: $secondary-light;
+}
+
+
 // Button
 .btn {
   transition: all 0.3s;
   border-radius: 0.5rem;
+}
+.btn-outline-primary:hover {
+  color: #fff;
+  border-color: #fff;
+  background-image: linear-gradient(45deg, $primary-light, $primary);
 }
 .btn-outline-blue {
   color: $blue;
@@ -129,5 +146,14 @@ h6 {
   }
   .icon-primary-dark {
     color: $primary-dark;
+  }
+}
+
+// Tutorials
+#tutorials {
+  h4 {
+    font-family: 'Fahkwang', sans-serif;
+    position: absolute;
+    top: 5%;
   }
 }

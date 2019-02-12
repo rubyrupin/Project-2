@@ -8,6 +8,7 @@ const tutorialSchema = new Schema(
       enum: ['html/css', 'javascript', 'react', 'nodejs', 'express', 'mongodb']
     },
     imgUrl: { type: String },
+    color: { type: String },
     type: { type: String, enum: ['article', 'video'] },
     link: { type: String, required: true },
     title: { type: String, required: true },

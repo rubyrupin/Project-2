@@ -6935,9 +6935,23 @@ h1, h2, h3, h4, h5, h6 {
 .text-blue {
   color: #4264fb; }
 
+.text-primary-light {
+  color: #9891fd; }
+
+.text-primary-dark {
+  color: #473dff; }
+
+.text-secondary-light {
+  color: #9ba9b4; }
+
 .btn {
   transition: all 0.3s;
   border-radius: 0.5rem; }
+
+.btn-outline-primary:hover {
+  color: #fff;
+  border-color: #fff;
+  background-image: linear-gradient(45deg, #9891fd, #6c63ff); }
 
 .btn-outline-blue {
   color: #4264fb;
@@ -7011,5 +7025,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #feature .icon-primary-dark {
   color: #473dff; }
+
+#tutorials h4 {
+  font-family: 'Fahkwang', sans-serif;
+  position: absolute;
+  top: 5%; }
 
 /*# sourceMappingURL=style.css.map */
