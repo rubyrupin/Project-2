@@ -39,7 +39,7 @@ router.post('/share', (req, res, next) => {
     _creator: req.user._id
   })
     .then(newTutorial => {
-      res.redirect('/profile');
+      res.render('protected/share-success');
     })
     .catch(err => {
       console.log(err);
