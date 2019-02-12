@@ -11,4 +11,6 @@ router.get('/', checkConnected, (req, res, next) => {
   res.render('profile/index', { user: req.user });
 });
 
+
+
 module.exports = router;
