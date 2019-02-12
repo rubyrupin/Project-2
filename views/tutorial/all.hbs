@@ -2,6 +2,7 @@
 
 <h2 class="text-dark text-center">Tutorials</h2>
 
+{{!-- category nav --}}
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
@@ -42,38 +43,46 @@
 	</div>
 </nav>
 
+{{!-- Show all tutorials --}}
 {{!-- TODO: filter article and sort time --}}
 
+<div id="tutorials" class="d-flex flex-wrap justify-content-center mt-5">
 
-<section class="container rounded mt-4">
-	<div class="row justify-content-center p-3">
+	{{#each tutorials}}
+	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
+		{{!-- FIXME: --}}
 
-		{{#each tutorials}}
-		<div class="card p-0 pb-4 col-lg-3 m-lg-3 m-md-1  shadow-sm">
-			{{!-- FIXME: --}}
-			<img src="/images/tutorials-page/mongodb.svg" class="card-img-top" alt="html/css">
-
-			<div class="card-body text-center">
-				<h5 class="card-title text-dark">Learn</h5>
-				<p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of
-					the card's
-					content.
-				</p>
-				<a href="#" class="btn btn-outline-primary">Go somewhere</a>
-			</div>
+		<div class="w-100 reference">
+			<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
+			<img src="{{this.imgUrl}}" class="card-img-top" alt="html/css w-50">
 		</div>
-		{{/each}}
 
+		<div class="card-body">
+			<p class="card-text text-secondary">{{this.description}}
+			</p>
+			<div>
+				<span class="d-block text-primary-dark m-b-0">{{this.type}}</span>
+				<span class="text-primary-light">{{this.duration}} min</span>
+			</div>
+
+			<div class="d-flex align-items-center justify-content-between mt-3">
+				<div>
+					<a href="{{this.link}}" target="_blank" class="btn btn-outline-primary">Learn now</a>
+				</div>
+
+				<form action="/tutorials/all" class="d-inline">
+					<div class="d-flex align-items-center">
+						<i class="d-block text-secondary-light fas fa-heart fa-2x"></i>
+						<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
+					</div>
+
+				</form>
+			</div>
+
+
+
+		</div>
 	</div>
-</section>
+	{{/each}}
 
-{{#each tutorials}}
-<div>
-	<p>{{this.title}} </p>
-	<p>{{this.description}}</p>
-	<p>{{this.type}}</p>
-	<p>{{this.duration}}</p>
-	<p>{{this.category}}</p>
-	<p>{{this.NbOfLikes}}</p>
 </div>
-{{/each}}
