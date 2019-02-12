@@ -6,6 +6,8 @@ $dark: #2c4058;
 $blue-light: #4298fb;
 $blue: #4264fb;
 $danger: #e62153;
+$red: #e62153;
+$red-light: #fa688d;
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
@@ -23,8 +25,7 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p {
+h6 {
   letter-spacing: 1px;
 }
 
@@ -46,29 +47,33 @@ p {
   border-color: #fff;
   background-image: linear-gradient(45deg, $blue-light, $blue);
 }
-.btn-outline-primary-light {
-  color: $primary-light;
-  border-color: $primary-light;
-}
-.btn-outline-primary-light:hover {
-  color: #fff;
-  background-color: $primary;
-  border-color: $primary;
-}
 .btn-outline-red {
   color: $red;
   border-color: $red;
 }
 .btn-outline-red:hover {
   color: #fff;
-  background-color: $red;
-  border-color: $red;
+  border-color: #fff;
+  background-image: linear-gradient(45deg, $red-light, $red);
 }
 
 // card
 .card {
   border: 1px solid rgba(#7d8a99, 0.1);
   border-radius: 0.4rem;
+}
+
+// navbar
+.navbar-tutorial {
+  .nav-link {
+    color: #858585;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+  }
+  .active {
+    font-weight: 700;
+    border-bottom: 2px solid $primary;
+  }
 }
 
 // layout
@@ -87,7 +92,7 @@ p {
   color: $primary;
 }
 
-.navbar {
+.navbar-primary {
   background-image: linear-gradient(45deg, #4298fb, #4264fb);
   padding: 10px 120px;
   #logo {
@@ -105,6 +110,7 @@ p {
     font-weight: 700;
   }
   p {
+    letter-spacing: 1px;
     line-height: 1.7;
   }
 }

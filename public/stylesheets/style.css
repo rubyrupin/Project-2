@@ -9,7 +9,7 @@
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
-  --red: #dc3545;
+  --red: #e62153;
   --orange: #fd7e14;
   --yellow: #ffc107;
   --green: #28a745;
@@ -6929,13 +6929,7 @@ a {
   color: #4264fb;
   transition: all 0.3s; }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px; }
 
 .text-blue {
@@ -6954,27 +6948,27 @@ p {
   border-color: #fff;
   background-image: linear-gradient(45deg, #4298fb, #4264fb); }
 
-.btn-outline-primary-light {
-  color: #9891fd;
-  border-color: #9891fd; }
-
-.btn-outline-primary-light:hover {
-  color: #fff;
-  background-color: #6c63ff;
-  border-color: #6c63ff; }
-
 .btn-outline-red {
-  color: #dc3545;
-  border-color: #dc3545; }
+  color: #e62153;
+  border-color: #e62153; }
 
 .btn-outline-red:hover {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545; }
+  border-color: #fff;
+  background-image: linear-gradient(45deg, #fa7596, #e62153); }
 
 .card {
   border: 1px solid rgba(125, 138, 153, 0.1);
   border-radius: 0.4rem; }
+
+.navbar-tutorial .nav-link {
+  color: #858585;
+  letter-spacing: 1px;
+  margin-right: 1rem; }
+
+.navbar-tutorial .active {
+  font-weight: 700;
+  border-bottom: 2px solid #6c63ff; }
 
 .navbar-light .navbar-nav .nav-link {
   font-weight: 700;
@@ -6987,10 +6981,10 @@ p {
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: #6c63ff; }
 
-.navbar {
+.navbar-primary {
   background-image: linear-gradient(45deg, #4298fb, #4264fb);
   padding: 10px 120px; }
-  .navbar #logo {
+  .navbar-primary #logo {
     font-family: 'Fahkwang', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
@@ -7001,6 +6995,7 @@ p {
   font-weight: 700; }
 
 #landing p {
+  letter-spacing: 1px;
   line-height: 1.7; }
 
 #feature .card-title {
@@ -7009,7 +7004,7 @@ p {
   letter-spacing: 2px; }
 
 #feature .icon-red {
-  color: #dc3545; }
+  color: #e62153; }
 
 #feature .icon-primary {
   color: #6c63ff; }
