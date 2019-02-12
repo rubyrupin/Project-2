@@ -18,8 +18,8 @@
         {{!-- title --}}
         <div class="form-group">
           <label for="title" class="text-blue">Title:</label>
-          <input name="title" type="text" class="form-control" id="title" placeholder="Enter the title of the tutorial"
-            required>
+          <input name="title" type="text" class="form-control" id="title" placeholder="Enter the title of the tutorial (max 80 characters)"
+          maxlength="80"  required>
         </div>
 
         {{!-- description --}}
@@ -30,47 +30,56 @@
         </div>
 
         {{!-- categories goshhhhhhhh!!!! --}}
-        <div class="mb-3 checkbox-group required">
-          <p class="mb-2 text-blue">Categories:</p>
-
+        <div class="mb-3">
+          <p class="mb-2 text-blue">Category:</p>
           <div class="form-check form-check-inline mb-2">
-            {{!-- hidden trick --}}
-            <input class="form-check-input" type="hidden" value="" name="categories">
 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="html-css" name="categories" value="html/css" checked>
-              <label class="form-check-label" for="html-css">HTML/CSS</label>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="category" id="html/css" value="html/css" checked>
+              <label class="form-check-label" for="html/css">
+                HTML/CSS
+              </label>
             </div>
 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="javascript" name="categories" value="javascript">
-              <label class="form-check-label" for="javascript">Javascript</label>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="category" id="javascript" value="javascript">
+              <label class="form-check-label" for="javascript">
+                Javascript
+              </label>
             </div>
 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="react" name="categories" value="react">
-              <label class="form-check-label" for="react">React</label>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="category" id="react" value="react">
+              <label class="form-check-label" for="react">
+                React
+              </label>
             </div>
           </div>
 
-          <div class="form-check form-check-inline">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="nodejs" name="categories" value="nodejs">
-              <label class="form-check-label" for="nodejs">Node.js</label>
+          <div class="form-check form-check-inline mb-2">
+
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="category" id="nodejs" value="nodejs">
+              <label class="form-check-label" for="nodejs">
+                Node.js
+              </label>
             </div>
 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="express" name="categories" value="express">
-              <label class="form-check-label" for="express">Express</label>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="category" id="express" value="express">
+              <label class="form-check-label" for="express">
+                Express
+              </label>
             </div>
 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="mongodb" name="categories" value="mongodb">
-              <label class="form-check-label" for="mongodb">MongoDB<label>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="category" id="mongodb" value="mongodb">
+              <label class="form-check-label" for="mongodb">
+                MongoDB
+              </label>
             </div>
           </div>
         </div>
-
 
         {{!-- type --}}
         <div class="mb-3">
@@ -112,4 +121,3 @@
     </div>
   </div>
 </div>
-
