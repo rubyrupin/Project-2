@@ -32,14 +32,14 @@ router.post('/share', checkConnected, (req, res, next) => {
   const color = assignColor(category);
 
   Tutorial.create({
-    imgUrl,
-    color,
     link,
     title,
     description,
     type,
     duration,
     category,
+    imgUrl,
+    color,
     _creator: req.user._id
   })
     .then(newTutorial => {
@@ -62,6 +62,35 @@ router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
   Tutorial.findById(req.params.tutorialId)
     .then(tutorial => {
       res.render('protected/edit', {tutorial})
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    })
+})
+
+// POST '/edit/:tutorialId'
+// ==> render edit success if succeed
+router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
+  const { link, title, description, type, duration, category } = req.body;
+
+  const imgUrl = assignImg(category);
+  const color = assignColor(category);
+
+  Tutorial.findByIdAndUpdate(req.params.tutorialId, {
+    link,
+    title,
+    description,
+    type,
+    duration,
+    category,
+    imgUrl,
+    color,
+    _creator: req.user._id
+  }, {new: true})
+    .then(updatedTutorial => {
+      console.log(updatedTutorial);
+      res.render('protected/edit-success')
     })
     .catch(err => {
       console.log(err);
