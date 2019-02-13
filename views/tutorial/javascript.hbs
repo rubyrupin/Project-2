@@ -4,8 +4,9 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
-	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -90,25 +91,28 @@
 
 {{!-- Script --}}
 <script>
-	let $likeButtons = [...document.querySelectorAll(".like-button")];
+	let $likeButtons = [...document.querySelectorAll(".btn-like")];
 
 	$likeButtons.forEach(($likeButton) => {
 		$likeButton.onclick = function () {
+			if (this.classList.contains('text-secondary-light')) {
+				this.classList.remove('text-secondary-light');
+				this.classList.add('text-red-light');
+			} else {
+				this.classList.remove('text-red-light');
+				this.classList.add('text-secondary-light');
+			}
 
-		}
-	})
+			// get the tutorial id and send req.body._tutorial
+			// use axios.post => /api/likes
+			let _tutorial = this.getAttribute('data-tutorial-id');
 
-	for (let i = 0; i < $likeButtons.length; i++) {
-		$likeButtons[i].onclick = function () {
-			console.log("The button was cliked", i)
-			this.className = "d-block text-primary-light fas fa-heart fa-2x like-button"
-			let _tutorial = this.getAttribute('data-tutorial-id')
-			// axios calls "POST /api/likes" and send req.body._tutorial
 			axios.post('/api/likes', { _tutorial })
 				.then(response => {
-					console.log('The post was liked')
+					this.nextElementSibling.textContent = response.data.nbOfLikes;
+
 				})
 				.catch(err => console.log('Error', err))
 		}
-	}
+	})
 </script>

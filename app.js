@@ -91,7 +91,6 @@ hbs.registerHelper('setChecked', (value, category) => {
   }
 });
 
-hbs.registerHelper('checkLike', () => {});
 
 // . Routes
 app.use('/', require('./routes/index'));

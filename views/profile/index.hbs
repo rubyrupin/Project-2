@@ -76,13 +76,11 @@
 		<a href="/profile/allposts" class="stretched-link">See all posts...</a>
 	</div>
 
-	<hr>
-
 
 	{{!-- 3 latest likes --}}
 	<section>
 
-		<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Likes:</h5>
+		<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Likes</h5>
 
 		<div class="d-flex flex-wrap justify-content-center  tutorials">
 
@@ -92,8 +90,8 @@
 
 				{{!-- title --}}
 				<div>
-					<h4 class="{{this._tutorial.color}} text-center m-3">{{this.title}}</h4>
-					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
+					<h4 class="{{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
 				</div>
 
 				<div class="card-body">
@@ -115,7 +113,7 @@
 							<a href="/edit/{{this._tutorial._id}}" class="btn-edit mr-3">
 								<i class="fas fa-pen text-secondary-light"></i>
 							</a>
-							<a href="/delete/{{this._tutorial._id}}" class="btn-delete">
+							<a href="/delete/{{this._tutorial_id}}" class="btn-delete">
 								<i class="far fa-trash-alt text-secondary-light"></i>
 							</a>
 						</div>
