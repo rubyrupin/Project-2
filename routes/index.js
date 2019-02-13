@@ -52,18 +52,6 @@ router.post('/share', checkConnected, (req, res, next) => {
       next(err);
     });
 });
-//Edit tutorial
-router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
-  Tutorial.findById(req.params.tutorialId)
-    .then(tutorial => {
-      res.render('protected/edit', { tutorial })
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
-})
-
 
 /************************************
  * Edit Tutorial (protected)
@@ -81,7 +69,11 @@ router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
     })
 })
 
-//Delete tutorial
+/************************************
+ * Delete Tutorial (protected)
+ ************************************/
+// GET '/delete/:tutorialId'
+// ==> redirect to profile when succeed
 router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
   Tutorial.findByIdAndDelete(req.params.tutorialId)
     .then(() => {
