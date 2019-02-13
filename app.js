@@ -20,7 +20,7 @@ const flash = require('connect-flash');
  * Connect to MongoDB
  ***************************************/
 mongoose
-  .connect('mongodb://localhost/ironlearn', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`

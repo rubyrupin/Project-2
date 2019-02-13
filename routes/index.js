@@ -32,14 +32,14 @@ router.post('/share', checkConnected, (req, res, next) => {
   const color = assignColor(category);
 
   Tutorial.create({
-    imgUrl,
-    color,
     link,
     title,
     description,
     type,
     duration,
     category,
+    imgUrl,
+    color,
     _creator: req.user._id
   })
     .then(newTutorial => {
@@ -69,25 +69,34 @@ router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
     })
 })
 
-/************************************
- * Delete Tutorial (protected)
- ************************************/
-// GET '/delete/:tutorialId'
-// ==> redirect to profile when succeed
-router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
-  Tutorial.findByIdAndDelete(req.params.tutorialId)
-    .then(() => {
-      res.redirect('/profile')
+// POST '/edit/:tutorialId'
+// ==> render edit success if succeed
+router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
+  const { link, title, description, type, duration, category } = req.body;
+
+  const imgUrl = assignImg(category);
+  const color = assignColor(category);
+
+  Tutorial.findByIdAndUpdate(req.params.tutorialId, {
+    link,
+    title,
+    description,
+    type,
+    duration,
+    category,
+    imgUrl,
+    color,
+    _creator: req.user._id
+  }, {new: true})
+    .then(updatedTutorial => {
+      console.log(updatedTutorial);
+      res.render('protected/edit-success')
     })
     .catch(err => {
-      console.log("Err happened when deleting", err);
+      console.log(err);
       next(err);
     })
 })
-
-
-
-
 
 
 module.exports = router
