@@ -84,13 +84,14 @@ require('./config/hbs-variables')(app);
 
 // 10. hbs helper function
 hbs.registerHelper('setChecked', (value, category) => {
-  console.log('value == category', value, category);
   if (value == category) {
     return 'checked';
   } else {
     return '';
   }
 });
+
+hbs.registerHelper('checkLike', () => {});
 
 // . Routes
 app.use('/', require('./routes/index'));

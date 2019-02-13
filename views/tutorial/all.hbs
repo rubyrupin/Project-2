@@ -80,9 +80,11 @@
 					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 				</div>
 
-				{{!-- TODO: like button --}}
 				<div class="d-flex align-items-center">
-					<i class="d-block fas fa-heart fa-2x text-secondary-light btn-like" data-tutorial-id="{{this._id}}"></i>
+					{{!-- FIXME: --}}
+					<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
+						data-tutorial-id="{{this._id}}"></i>
+
 					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 				</div>
 			</div>
@@ -91,9 +93,14 @@
 	{{/each}}
 </div>
 
+
 {{!-- Script --}}
 
 <script>
+
+
+
+
 	let $likeButtons = [...document.querySelectorAll(".btn-like")];
 
 	$likeButtons.forEach(($likeButton) => {
