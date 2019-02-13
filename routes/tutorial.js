@@ -30,9 +30,16 @@ router.get('/all', checkConnected, (req, res, next) => {
  * HTML & CSS
  ***************************************/
 router.get('/html-css', (req, res, next) => {
-	Tutorial.find({ category: 'html/css' })
-		.then(htmlCss => {
-			res.render('tutorial/html-css', { htmlCss });
+	Promise.all([Tutorial.find({ category: 'html/css' }).lean(), Like.find({ _user: req.user._id })])
+		.then(([tutorials, likesFromConnectedUser]) => {
+			res.render('tutorial/html-css', {
+				tutorials: tutorials.map(tutorial => ({
+					...tutorial,
+					isLiked: likesFromConnectedUser.some(like =>
+						like._tutorial.equals(tutorial._id)
+					)
+				}))
+			});
 		})
 		.catch(err => {
 			console.log(err);

@@ -34,7 +34,7 @@
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 
 
-		{{#each post}}
+		{{#each posts}}
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
@@ -76,46 +76,44 @@
 		<a href="/profile/allposts" class="stretched-link">See all posts...</a>
 	</div>
 
-	<hr>
-
 
 	{{!-- 3 latest likes --}}
 	<section>
 
-		<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Tutorials you have liked:</h5>
+		<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Likes</h5>
 
 		<div class="d-flex flex-wrap justify-content-center  tutorials">
 
 
-			{{#each post}}
+			{{#each likes}}
 			<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 				{{!-- title --}}
 				<div>
-					<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
-					<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
+					<h4 class="{{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
 				</div>
 
 				<div class="card-body">
 					{{!-- description --}}
-					<p class="card-text text-secondary">{{this.description}}
+					<p class="card-text text-secondary">{{this._tutorial.description}}
 					</p>
 					{{!-- category, type and duration --}}
 					<p class="text-secondary-light">
-						{{this.category}} | {{this.type}} | {{this.duration}} min
+						{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
 					</p>
 
 					<div class="d-flex align-items-center justify-content-between mt-3">
 						<div>
-							<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+							<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 						</div>
 
 						{{!-- TODO: delete and edit button--}}
 						<div class="d-flex align-items-center">
-							<a href="/edit/{{this._id}}" class="btn-edit mr-3">
+							<a href="/edit/{{this._tutorial._id}}" class="btn-edit mr-3">
 								<i class="fas fa-pen text-secondary-light"></i>
 							</a>
-							<a href="/delete/{{this._id}}" class="btn-delete">
+							<a href="/delete/{{this._tutorial_id}}" class="btn-delete">
 								<i class="far fa-trash-alt text-secondary-light"></i>
 							</a>
 						</div>
@@ -126,7 +124,7 @@
 		</div>
 
 		<div class="text-right mr-5 pr-5">
-			<a href="/profile/allposts" class="stretched-link">See all liked tutorials...</a>
+			<a href="/profile/allposts" class="stretched-link">See all likes...</a>
 		</div>
 
 	</section>
