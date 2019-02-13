@@ -73,20 +73,40 @@
 </section>
 
 {{#each allCreated }}
-<div class="card p-0 pb-4 col-lg-3 m-lg-3 m-md-1  shadow-sm">
+<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 	{{!-- FIXME: --}}
-	<img src="/images/tutorials-page/mongodb.svg" class="card-img-top" alt="html/css">
 
-	<div class="card-body text-center">
-		<h5 class="card-title text-dark">{{this.title}}</h5>
-		<p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of
-			the card's
-			content.
+	<div class="w-100 reference">
+		<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
+		<img src="{{this.imgUrl}}" class="card-img-top" alt="html/css w-50">
+	</div>
+
+	<div class="card-body">
+		<p class="card-text text-secondary">{{this.description}}
 		</p>
-		<a href="#" class="btn btn-outline-primary">Go somewhere</a>
+		<div>
+			<span class="d-block text-primary-dark m-b-0">{{this.type}}</span>
+			<span class="text-primary-light">{{this.duration}} min</span>
+		</div>
+
+		<div class="d-flex align-items-center justify-content-between mt-3">
+			<div>
+				<a href="{{this.link}}" target="_blank" class="btn btn-outline-primary">Learn now</a>
+			</div>
+
+			<form action="/tutorials/all" class="d-inline">
+				<div class="d-flex align-items-center">
+					<i class="d-block text-secondary-light fas fa-heart fa-2x"></i>
+					<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
+				</div>
+
+			</form>
+		</div>
+
+
+
 	</div>
 </div>
 {{/each}}
 
-</div>
 </section>

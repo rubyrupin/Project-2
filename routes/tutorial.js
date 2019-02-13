@@ -30,7 +30,7 @@ router.get('/all', (req, res, next) => {
  * HTML & CSS
  ***************************************/
 router.get('/html-css', (req, res, next) => {
-  Tutorial.find({ categories: 'html/css' })
+  Tutorial.find({ category: 'html/css' })
     .then(htmlCss => {
       res.render('tutorial/html-css', { htmlCss });
     })
@@ -44,7 +44,7 @@ router.get('/html-css', (req, res, next) => {
  * Javascript
  ***************************************/
 router.get('/javascript', (req, res, next) => {
-  Tutorial.find({ categories: 'javascript' })
+  Tutorial.find({ category: 'javascript' })
     .then(javascript => {
       res.render('tutorial/javascript', { javascript });
     })
@@ -58,56 +58,56 @@ router.get('/javascript', (req, res, next) => {
  * React
  ***************************************/
 router.get('/react', (req, res, next) => {
-  Tutorial.find({ categories: 'react' })
-    .then(react => {
-      res.render('tutorial/react', { react });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+	Tutorial.find({ category: 'react' })
+		.then(react => {
+			res.render('tutorial/react', { react });
+		})
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 /***************************************
  * Nodejs
  ***************************************/
 router.get('/nodejs', (req, res, next) => {
-  Tutorial.find({ categories: 'nodejs' })
-    .then(nodejs => {
-      res.render('tutorial/nodejs', { nodejs });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+	Tutorial.find({ category: 'nodejs' })
+		.then(nodejs => {
+			res.render('tutorial/nodejs', { nodejs });
+		})
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 /***************************************
  * Express
  ***************************************/
 router.get('/express', (req, res, next) => {
-  Tutorial.find({ categories: 'express' })
-    .then(express => {
-      res.render('tutorial/express', { express });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+	Tutorial.find({ category: 'express' })
+		.then(express => {
+			res.render('tutorial/express', { express });
+		})
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 /***************************************
  * Mongodb
  ***************************************/
 router.get('/mongodb', (req, res, next) => {
-  Tutorial.find({ categories: 'mongodb' })
-    .then(mongodb => {
-      res.render('tutorial/mongodb', { mongodb });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+	Tutorial.find({ category: 'mongodb' })
+		.then(mongodb => {
+			res.render('tutorial/mongodb', { mongodb });
+		})
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 
