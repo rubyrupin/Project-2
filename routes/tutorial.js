@@ -7,24 +7,7 @@ const router = express.Router();
 /***************************************
  * Show all tutorials
  ***************************************/
-// router.get('/all', checkConnected, (req, res, next) => {
-//   let tutorials;
-
-//   Tutorial.find()
-//     .populate('_creator')
-//     .then(tutorialDocs => {
-//       tutorials = tutorialDocs;
-//       return Like.find({ _user: req.user._id });
-//     })
-//     .then(likes => {
-//       res.render('tutorial/all', { tutorials, likes });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       next(err);
-//     });
-// });
-
+// GET ('/tutorials/all')
 router.get('/all', checkConnected, (req, res, next) => {
   Promise.all([Tutorial.find().lean(), Like.find({ _user: req.user._id })])
     .then(([tutorials, likesFromConnectedUser]) => {
@@ -47,28 +30,28 @@ router.get('/all', checkConnected, (req, res, next) => {
  * HTML & CSS
  ***************************************/
 router.get('/html-css', (req, res, next) => {
-  Tutorial.find({ category: 'html/css' })
-    .then(htmlCss => {
-      res.render('tutorial/html-css', { htmlCss });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+	Tutorial.find({ category: 'html/css' })
+		.then(htmlCss => {
+			res.render('tutorial/html-css', { htmlCss });
+		})
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 /***************************************
  * Javascript
  ***************************************/
 router.get('/javascript', (req, res, next) => {
-  Tutorial.find({ category: 'javascript' })
-    .then(javascript => {
-      res.render('tutorial/javascript', { javascript });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+	Tutorial.find({ category: 'javascript' })
+		.then(javascript => {
+			res.render('tutorial/javascript', { javascript });
+		})
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 /***************************************

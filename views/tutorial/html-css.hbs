@@ -79,6 +79,14 @@
 					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 				</div>
 
+				{{#if isAdmin}}
+				<p>helloooooo</p>
+				<a href="/delete/{{this._id}}" class="btn-delete">
+					<i class="far fa-trash-alt text-secondary-light"></i>
+				</a>
+				{{/if}}
+
+
 				<div class="d-flex align-items-center">
 					<i class="d-block text-secondary-light fas fa-heart fa-2x like-button" data-tutorial-id="{{this._id}}"></i>
 
@@ -115,3 +123,10 @@
 		}
 	}
 </script>
+
+{{#if isAdmin}}
+<a href="/delete/{{this._id}}" class="btn-delete">
+	<i class="far fa-trash-alt text-secondary-light"></i>
+</a>
+<p>helloooooo</p>
+{{/if}}

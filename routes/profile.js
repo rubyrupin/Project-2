@@ -3,12 +3,13 @@ const { checkConnected } = require('../config/middlewares');
 const router = express.Router();
 const Tutorial = require('../models/Tutorial')
 const User = require('../models/User')
+const Like = require('../models/Like')
 
 /************************************
  * PROFILE PAGE
  ************************************/
 // GET '/profile'
-// ==> view profile, show 3 latest post and likes
+// ==> view profile, show 3 latest posts and likes
 router.get('/', checkConnected, (req, res, next) => {
   Tutorial.find({ _creator: req.user._id }).sort({ "created_at": -1 }).limit(3)
     .then(post => {
@@ -19,7 +20,17 @@ router.get('/', checkConnected, (req, res, next) => {
       next(err);
     });
 })
-
+/************************************
+ * PROFILE PAGE Shows 3 likes
+ ************************************/
+router.get('/', checkConnected, (req, res, next) => {
+  Like.find({ _user: req.user._id }).sort({ "created_at": -1 }).limit(3)
+    .populate("_tutorial")
+    .then(likes => {
+      console.log(likes)
+      res.render('profile/index', { likes })
+    })
+})
 
 /************************************
  * See all Tutorial (protected)
