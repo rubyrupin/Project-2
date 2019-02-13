@@ -7,7 +7,7 @@
       <h3 class="text-center text-dark mb-4">Edit Post</h3>
 
       {{!-- FORM STARTS HERE (gosh bootstrap -.-) --}}
-      <form action="/share" method="POST">
+      <form action="/edit/{{tutorial._id}}" method="POST">
 
         {{!-- link --}}
         <div class="form-group">
@@ -31,7 +31,6 @@
             placeholder="Tell us what is the tutorial about (max 150 characters)">{{tutorial.description}}</textarea>
         </div>
 
-        {{!-- TODO: --}}
         {{!-- category goshhhhhhhh!!!! --}}
         <div class="mb-3">
           <p class="mb-2 text-blue">Category:</p>
