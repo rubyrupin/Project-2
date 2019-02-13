@@ -39,7 +39,7 @@ router.post('/share', checkConnected, (req, res, next) => {
     description,
     type,
     duration,
-    category,
+    category, q,
     _creator: req.user._id
   })
     .then(newTutorial => {
@@ -52,6 +52,28 @@ router.post('/share', checkConnected, (req, res, next) => {
       next(err);
     });
 });
+//Edit tutorial
+router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
+  Tutorial.findById(req.params.tutorialId)
+    .then(tutorial => {
+      res.render('protected/edit', { tutorial })
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
+})
 
+//Delete tutorial
+router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
+  Tutorial.findByIdAndDelete(req.params.tutorialId)
+    .then(() => {
+      res.redirect('/profile')
+    })
+    .catch(err => {
+      console.log("Err happened when deleting", err);
+      next(err);
+    })
+})
 
-module.exports = router;
+module.exports = router
