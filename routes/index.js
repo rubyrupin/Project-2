@@ -24,8 +24,8 @@ router.get('/share', checkConnected, (req, res, next) => {
 
 // POST '/share'
 // ==> create new tutorial
-// ==> redirect to profile when success
-router.post('/share', (req, res, next) => {
+// ==> redirect to post sucess when success
+router.post('/share', checkConnected, (req, res, next) => {
   const { link, title, description, type, duration, category } = req.body;
 
   const imgUrl = assignImg(category);
@@ -53,11 +53,5 @@ router.post('/share', (req, res, next) => {
     });
 });
 
-/************************************
- * //TODO: delete this after testing
- ************************************/
-// router.get('/share/success', (req, res, next) => {
-//   res.render('protected/share-success');
-// })
 
 module.exports = router;

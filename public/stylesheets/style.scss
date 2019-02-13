@@ -43,7 +43,9 @@ h6 {
 .text-secondary-light {
   color: $secondary-light;
 }
-.text-red
+.text-red-light {
+  color: $red-light;
+}
 
 // Button
 .btn {
@@ -150,7 +152,7 @@ h6 {
 }
 
 // Tutorials
-#tutorials {
+.tutorials {
   h4 {
     font-family: 'Times New Roman', Times, serif;
     position: absolute;
@@ -160,7 +162,7 @@ h6 {
     font-weight: 700;
     letter-spacing: 1px;
   }
-  .like-button {
-    cursor: pointer;
+  .btn-like {
+    text-decoration: none;
   }
 }

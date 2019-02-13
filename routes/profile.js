@@ -8,15 +8,14 @@ const User = require('../models/User')
  * PROFILE PAGE
  ************************************/
 // GET '/profile'
-// TODO: protect the route
+// ==> view profile, show 3 latest post and likes
 router.get('/', checkConnected, (req, res, next) => {
   Tutorial.find({ _creator: req.user._id }).sort({ "created_at": -1 }).limit(3)
-    .then(allCreated => {
-      console.log(allCreated)
-      res.render('profile/index', { allCreated, user: req.user })
+    .then(post => {
+      res.render('profile/index', { post, user: req.user })
     })
     .catch(err => {
-      console.log("something went wrong when creating profile allCreated");
+      console.log("opps, something went wrong");
       next(err);
     });
 })

@@ -6944,7 +6944,10 @@ h1, h2, h3, h4, h5, h6 {
 .text-secondary-light {
   color: #9ba9b4; }
 
-.text-red .btn {
+.text-red-light {
+  color: #fa688d; }
+
+.btn {
   transition: all 0.3s;
   border-radius: 0.5rem; }
 
@@ -7026,16 +7029,16 @@ h1, h2, h3, h4, h5, h6 {
 #feature .icon-primary-dark {
   color: #473dff; }
 
-#tutorials h4 {
+.tutorials h4 {
   font-family: 'Times New Roman', Times, serif;
   position: absolute; }
 
-#tutorials .creator {
+.tutorials .creator {
   font-family: 'Fahkwang', sans-serif;
   font-weight: 700;
   letter-spacing: 1px; }
 
-#tutorials .like-button {
-  cursor: pointer; }
+.tutorials .btn-like {
+  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */
