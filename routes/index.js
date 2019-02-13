@@ -87,7 +87,7 @@ router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
     imgUrl,
     color,
     _creator: req.user._id
-  }, {new: true})
+  }, { new: true })
     .then(updatedTutorial => {
       console.log(updatedTutorial);
       res.render('protected/edit-success')
@@ -98,5 +98,20 @@ router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
     })
 })
 
+/************************************
+ * Delete Tutorial (protected)
+ ************************************/
+// GET '/delete/:tutorialId'
+// ==> redirect to profile when succeeded
+router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
+  Tutorial.findByIdAndDelete(req.params.tutorialId)
+    .then(() => {
+      res.redirect('/profile')
+    })
+    .catch(err => {
+      console.log("Err happened when deleting at allposts ", err);
+      next(err);
+    })
+})
 
 module.exports = router
