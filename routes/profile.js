@@ -65,7 +65,7 @@ router.get('/allposts', checkConnected, (req, res, next) => {
         res.render('profile/allposts', { post, user: req.user })
       } else {
 
-      res.render('profile/allposts', { post, user: req.user })
+        res.render('profile/allposts', { post, user: req.user })
       }
     })
     .catch(err => {
