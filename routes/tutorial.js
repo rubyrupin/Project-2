@@ -9,7 +9,13 @@ const router = express.Router();
  ***************************************/
 // GET ('/tutorials/all')
 router.get('/all', checkConnected, (req, res, next) => {
-  Promise.all([Tutorial.find().lean(), Like.find({ _user: req.user._id })])
+  Promise.all([
+    Tutorial.find()
+      .populate('_creator')
+      .lean(),
+    Like.find({ _user: req.user._id })
+  ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/all', {
         tutorials: tutorials.map(tutorial => ({
@@ -30,35 +36,39 @@ router.get('/all', checkConnected, (req, res, next) => {
  * HTML & CSS
  ***************************************/
 router.get('/html-css', (req, res, next) => {
-	Promise.all([Tutorial.find({ category: 'html/css' }).lean(), Like.find({ _user: req.user._id })])
-		.then(([tutorials, likesFromConnectedUser]) => {
-			res.render('tutorial/html-css', {
-				tutorials: tutorials.map(tutorial => ({
-					...tutorial,
-					isLiked: likesFromConnectedUser.some(like =>
-						like._tutorial.equals(tutorial._id)
-					)
-				}))
-			});
-		})
-		.catch(err => {
-			console.log(err);
-			next(err);
-		});
+  Promise.all([
+    Tutorial.find({ category: 'html/css' }).lean(),
+    Like.find({ _user: req.user._id })
+  ])
+    .then(([tutorials, likesFromConnectedUser]) => {
+      res.render('tutorial/html-css', {
+        tutorials: tutorials.map(tutorial => ({
+          ...tutorial,
+          isLiked: likesFromConnectedUser.some(like =>
+            like._tutorial.equals(tutorial._id)
+          )
+        }))
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
 });
 
 /***************************************
  * Javascript
  ***************************************/
 router.get('/javascript', (req, res, next) => {
-	Tutorial.find({ category: 'javascript' })
-		.then(javascript => {
-			res.render('tutorial/javascript', { javascript });
-		})
-		.catch(err => {
-			console.log(err);
-			next(err);
-		});
+  Tutorial.find({ category: 'javascript' })
+    .populate('_creator')
+    .then(javascript => {
+      res.render('tutorial/javascript', { javascript });
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
 });
 
 /***************************************
