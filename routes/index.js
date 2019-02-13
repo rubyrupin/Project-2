@@ -61,7 +61,7 @@ router.post('/share', checkConnected, (req, res, next) => {
 router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
   Tutorial.findById(req.params.tutorialId)
     .then(tutorial => {
-      res.render('protected/edit', {tutorial})
+      res.render('protected/edit', { tutorial })
     })
     .catch(err => {
       console.log(err);
@@ -101,4 +101,4 @@ router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
 
 
 
-module.exports = router;
+module.exports = router
