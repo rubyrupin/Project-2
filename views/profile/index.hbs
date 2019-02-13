@@ -4,7 +4,7 @@
 <section id="profile" class="container mt-sm-1 mb-5">
 
 	<div class="row justify-content-md-center">
-		<div class="col-lg-5 pb-md-1 pl-5 ">
+		<div class="col-lg-4 pb-md-1 pl-5 ">
 			<img src="{{user.imgUrl}}" alt="profile pic" width="100%">
 		</div>
 
@@ -32,8 +32,6 @@
 	<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Posts:</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
-
-
 		{{#each posts}}
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
@@ -72,9 +70,13 @@
 		{{/each}}
 	</div>
 
+	{{#if noPostMessage}}
+	<p class="text-center text-secondary-light">{{noPostMessage}}</p>
+	{{else}}
 	<div class="text-right mr-5 pr-5">
 		<a href="/profile/allposts" class="stretched-link">See all posts...</a>
 	</div>
+	{{/if}}
 
 
 	{{!-- 3 latest likes --}}
@@ -123,8 +125,12 @@
 			{{/each}}
 		</div>
 
+		{{#if noLikeMessage}}
+		<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
+		{{else}}
 		<div class="text-right mr-5 pr-5">
-			<a href="/profile/allposts" class="stretched-link">See all likes...</a>
+			<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
 		</div>
+		{{/if}}
 
 	</section>
