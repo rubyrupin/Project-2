@@ -24,6 +24,10 @@
 			<li class="nav-item">
 				<a class="nav-link" href="/tutorials/javascript">Javascript<span class="sr-only">(current)</span></a>
 			</li>
+			{{!-- react --}}
+			<li class="nav-item">
+				<a class="nav-link" href="/tutorials/react">React<span class="sr-only">(current)</span></a>
+			</li>
 			{{!-- nodejs --}}
 			<li class="nav-item">
 				<a class="nav-link active" href="/tutorials/nodejs">Node.js<span class="sr-only">(current)</span></a>
@@ -41,7 +45,7 @@
 </nav>
 
 {{!-- Show all tutorials --}}
-<div id="tutorials" class="d-flex flex-wrap justify-content-center mt-5">
+<div id="tutorials" class="tutorials d-flex flex-wrap justify-content-center mt-5">
 
 	{{#each nodejs}}
 	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
