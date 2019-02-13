@@ -85,21 +85,7 @@ router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
     })
 })
 
-/************************************
- * See all Tutorial (protected)
- ************************************/
-// GET '/profile/allposts'
 
-router.get('/profile/allposts', checkConnected, (req, res, next) => {
-  Tutorial.find({ _creator: req.user._id }).sort({ "created_at": -1 })
-    .then(post => {
-      res.render('profile/allposts', { post, user: req.user })
-    })
-    .catch(err => {
-      console.log("opps, something went wrong when showing all");
-      next(err);
-    });
-})
 
 
 
