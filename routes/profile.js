@@ -42,7 +42,7 @@ router.get('/allposts', checkConnected, (req, res, next) => {
  * Delete Tutorial (protected)
  ************************************/
 // GET '/delete/:tutorialId'
-// ==> redirect to profile when succeed
+// ==> redirect to ALLPOSTS when succeed
 router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
   Tutorial.findByIdAndDelete(req.params.tutorialId)
     .then(() => {
