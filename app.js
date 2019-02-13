@@ -83,14 +83,14 @@ require('./passport')(app);
 require('./config/hbs-variables')(app);
 
 // 10. hbs helper function
-hbs.registerHelper("setChecked", (value, category) => {
-  console.log("value == category", value, category)
+hbs.registerHelper('setChecked', (value, category) => {
+  console.log('value == category', value, category);
   if (value == category) {
-    return "checked"
+    return 'checked';
   } else {
-    return ""
+    return '';
   }
-})
+});
 
 // . Routes
 app.use('/', require('./routes/index'));

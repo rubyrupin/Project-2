@@ -7,8 +7,9 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
-	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -79,12 +80,10 @@
 					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 				</div>
 
+				{{!-- TODO: like button --}}
 				<div class="d-flex align-items-center">
-					<a href="/tutorials/all/like/{{this._id}}" class="btn-like">
-						<i class="d-block fas fa-heart fa-2x like-button text-secondary-light" data-tutorial-id="{{this._id}}"></i>
-					</a>
-
-					<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
+					<i class="d-block fas fa-heart fa-2x text-secondary-light btn-like" data-tutorial-id="{{this._id}}"></i>
+					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 				</div>
 			</div>
 		</div>
@@ -93,9 +92,9 @@
 </div>
 
 {{!-- Script --}}
-{{!--
+
 <script>
-	let $likeButtons = [...document.querySelectorAll(".like-button")];
+	let $likeButtons = [...document.querySelectorAll(".btn-like")];
 
 	$likeButtons.forEach(($likeButton) => {
 		$likeButton.onclick = function () {
@@ -113,9 +112,11 @@
 
 			axios.post('/api/likes', { _tutorial })
 				.then(response => {
-					console.log('liked or unliked')
+					this.nextElementSibling.textContent = response.data.nbOfLikes;
+
 				})
 				.catch(err => console.log('Error', err))
+
 		}
 	})
-</script> --}}
+</script>
