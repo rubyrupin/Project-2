@@ -64,6 +64,23 @@ router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
     });
 })
 
+
+/************************************
+ * Edit Tutorial (protected)
+ ************************************/
+// GET '/edit/:tutorialId'
+// ==> render edit form
+router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
+  Tutorial.findById(req.params.tutorialId)
+    .then(tutorial => {
+      res.render('protected/edit', { tutorial })
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    })
+})
+
 //Delete tutorial
 router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
   Tutorial.findByIdAndDelete(req.params.tutorialId)
@@ -75,5 +92,7 @@ router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
       next(err);
     })
 })
+
+
 
 module.exports = router
