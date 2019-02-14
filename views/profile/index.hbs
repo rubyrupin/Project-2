@@ -25,11 +25,10 @@
 </section>
 
 <hr>
-
 {{!-- 3 latest posts --}}
 <section>
 
-	<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Posts:</h5>
+	<h5 class="text-secondary text-center mt-5 pt-lg-2 mb-2">Your Posts:</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 		{{#each posts}}
@@ -55,7 +54,6 @@
 						<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 					</div>
 
-					{{!-- TODO: delete and edit button--}}
 					<div class="d-flex align-items-center">
 						<a href="/edit/{{this._id}}" class="btn-edit mr-3">
 							<i class="fas fa-pen text-secondary-light"></i>
@@ -73,7 +71,7 @@
 	{{#if noPostMessage}}
 	<p class="text-center text-secondary-light">{{noPostMessage}}</p>
 	{{else}}
-	<div class="text-right mr-5 pr-5">
+	<div class="text-right text-center mt-2">
 		<a href="/profile/allposts" class="stretched-link">See all posts...</a>
 	</div>
 	{{/if}}
@@ -82,7 +80,7 @@
 	{{!-- 3 latest likes --}}
 	<section>
 
-		<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Likes</h5>
+		<h5 class="text-secondary text-center mt-5 mb-2">Your Likes</h5>
 
 		<div class="d-flex flex-wrap justify-content-center  tutorials">
 
@@ -127,7 +125,7 @@
 		{{#if noLikeMessage}}
 		<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
 		{{else}}
-		<div class="text-right mr-5 pr-5">
+		<div class="text-right text-center mt-2">
 			<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
 		</div>
 		{{/if}}
