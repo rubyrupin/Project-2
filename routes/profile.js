@@ -42,7 +42,8 @@ router.get('/', checkConnected, (req, res, next) => {
   Promise.all([
     Tutorial.find({ _creator: req.user._id })
       .sort({ created_at: -1 })
-      .limit(3),
+      .limit(3)
+      .lean(),
     Like.find({ _user: req.user._id })
       .sort({ created_at: -1 })
       .limit(3)
@@ -52,7 +53,10 @@ router.get('/', checkConnected, (req, res, next) => {
       res.render('profile/index', {
         user: req.user,
         noPostMessage: 'No posts yet',
-        likes
+        likes: posts.map(tutorial => ({
+          ...tutorial,
+          isLiked: likes.some(like => like._tutorial.equals(tutorial._id))
+        }))
       });
     } else if (likes.length == 0 && posts.length != 0) {
       res.render('profile/index', {

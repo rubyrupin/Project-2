@@ -6,8 +6,9 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
-	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -53,44 +54,44 @@
 	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 		{{!-- title --}}
-		<a href="{{this.link}}" target="_blank"">
 		<div>
-			<h4 class=" {{this.color}} text-center m-3">{{this.title}}</h4>
-			<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
-	</div>
-	</a>
+			<a href="{{this.link}}" target="_blank">
+				<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
+				<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
+			</a>
+		</div>
 
-	<div class="card-body">
-		{{!-- description --}}
-		<p class="card-text text-secondary">{{this.description}}
-		</p>
-		{{!-- category, type and duration --}}
-		<p class="text-secondary-light">
-			{{this.category}} | {{this.type}} | {{this.duration}} min
-		</p>
+		<div class="card-body">
+			{{!-- description --}}
+			<p class="card-text text-secondary">{{this.description}}
+			</p>
+			{{!-- category, type and duration --}}
+			<p class="text-secondary-light">
+				{{this.category}} | {{this.type}} | {{this.duration}} min
+			</p>
 
-		{{!-- creator --}}
-		{{!-- TODO: link to creator page --}}
-		<p class="text-secondary">
-			<a class="creator" href="#">{{this._creator.username}}</a> shared this
-		</p>
+			{{!-- creator --}}
+			{{!-- TODO: link to creator page --}}
+			<p class="text-secondary">
+				<a class="creator" href="#">{{this._creator.username}}</a> shared this
+			</p>
 
-		<div class="d-flex align-items-center justify-content-between mt-3">
-			<div>
-				<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
-			</div>
+			<div class="d-flex align-items-center justify-content-between mt-3">
+				<div>
+					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+				</div>
 
-			<div class="d-flex align-items-center">
+				<div class="d-flex align-items-center">
 
-				<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
-				 data-tutorial-id="{{this._id}}"></i>
+					<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
+						data-tutorial-id="{{this._id}}"></i>
 
-				<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
+					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-{{/each}}
+	{{/each}}
 </div>
 
 
