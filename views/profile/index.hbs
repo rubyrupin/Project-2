@@ -25,9 +25,9 @@
 </section>
 
 <hr>
+
 {{!-- 3 latest posts --}}
 <section>
-
 	<h5 class="text-secondary text-center mt-5 pt-lg-2 mb-2">Your Posts:</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
@@ -76,58 +76,88 @@
 	</div>
 	{{/if}}
 
+</section>
 
-	{{!-- 3 latest likes --}}
-	<section>
+{{!-- 3 latest likes --}}
+<section>
+	<h5 class="text-secondary text-center mt-5 mb-2">Your Likes</h5>
 
-		<h5 class="text-secondary text-center mt-5 mb-2">Your Likes</h5>
+	<div class="d-flex flex-wrap justify-content-center  tutorials">
 
-		<div class="d-flex flex-wrap justify-content-center  tutorials">
+		{{#each likes}}
+		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
+			{{!-- title --}}
+			<div>
+				<h4 class="{{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+				<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
+			</div>
 
-			{{#each likes}}
-			<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
+			<div class="card-body">
+				{{!-- description --}}
+				<p class="card-text text-secondary">{{this._tutorial.description}}
+				</p>
+				{{!-- category, type and duration --}}
+				<p class="text-secondary-light">
+					{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
+				</p>
 
-				{{!-- title --}}
-				<div>
-					<h4 class="{{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
-					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
-				</div>
-
-				<div class="card-body">
-					{{!-- description --}}
-					<p class="card-text text-secondary">{{this._tutorial.description}}
-					</p>
-					{{!-- category, type and duration --}}
-					<p class="text-secondary-light">
-						{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
-					</p>
-
-					<div class="d-flex align-items-center justify-content-between mt-3">
-						<div>
-							<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
-						</div>
-
-						<div class="d-flex align-items-center">
-							<a href="/edit/{{this._tutorial._id}}" class="btn-edit mr-3">
-								<i class="fas fa-pen text-secondary-light"></i>
-							</a>
-							<a href="/delete/{{this._tutorial_id}}" class="btn-delete">
-								<i class="far fa-trash-alt text-secondary-light"></i>
-							</a>
-						</div>
+				<div class="d-flex align-items-center justify-content-between mt-3">
+					<div>
+						<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 					</div>
+
+					<div class="d-flex align-items-center">
+						<i class="d-block fas fa-heart fa-2x text-red-light btn-like" data-tutorial-id="{{this._tutorial._id}}"></i>
+
+						<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._tutorial._id}}">{{this._tutorial.nbOfLikes}}</p>
+					</div>
+
 				</div>
 			</div>
-			{{/each}}
 		</div>
+		{{/each}}
+	</div>
 
-		{{#if noLikeMessage}}
-		<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
-		{{else}}
-		<div class="text-right text-center mt-2">
-			<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
-		</div>
-		{{/if}}
+	{{#if noLikeMessage}}
+	<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
+	{{else}}
+	<div class="text-right text-center mt-2">
+		<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
+	</div>
+	{{/if}}
 
-	</section>
+</section>
+
+{{#each latestLikes}}
+<p>{{this._tutorial._id}}</p>
+{{/each}}
+
+
+{{!-- script --}}
+<script>
+	let $likeButtons = [...document.querySelectorAll(".btn-like")];
+
+	$likeButtons.forEach(($likeButton) => {
+		$likeButton.onclick = function () {
+			if (this.classList.contains('text-secondary-light')) {
+				this.classList.remove('text-secondary-light');
+				this.classList.add('text-red-light');
+			} else {
+				this.classList.remove('text-red-light');
+				this.classList.add('text-secondary-light');
+			}
+
+			// get the tutorial id and send req.body._tutorial
+			// use axios.post => /api/likes
+			let _tutorial = this.getAttribute('data-tutorial-id');
+
+			axios.post('/api/likes', { _tutorial })
+				.then(response => {
+					this.nextElementSibling.textContent = response.data.nbOfLikes;
+
+				})
+				.catch(err => console.log('Error', err))
+		}
+	})
+</script>
