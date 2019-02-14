@@ -3,12 +3,15 @@ $primary-light: #9891fd;
 $primary-dark: #473dff;
 $primary-super-dark: #3830cc;
 $secondary-light: #9ba9b4;
+$secondary-dark: #8a96a0;
 $dark: #2c4058;
 $blue-light: #4298fb;
+$blue-super-light: #eef1ff;
 $blue: #4264fb;
 $danger: #e62153;
 $red: #e62153;
 $red-light: #fa688d;
+$success: #cee5ff;
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
@@ -33,6 +36,9 @@ h6 {
 // text
 .text-blue {
   color: $blue;
+}
+.text-blue-light {
+  color: $blue-super-light;
 }
 .text-primary-light {
   color: $primary-light;
@@ -94,8 +100,6 @@ h6 {
     border-bottom: 2px solid $primary;
   }
 }
-
-
 
 // layout
 .navbar-light .navbar-nav .nav-link {

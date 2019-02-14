@@ -28,6 +28,9 @@ module.exports = app => {
     if (req.url === '/auth/login') {
       res.locals.activeClass = { login: true };
     }
+    if (req.url === '/auth/logout') {
+      res.locals.activeClass = { logout: true };
+    }
 
     next();
   });
