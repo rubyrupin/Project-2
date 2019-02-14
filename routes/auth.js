@@ -68,8 +68,7 @@ router.post('/signup', (req, res, next) => {
 
     User.create(newUser)
       .then(userCreated => {
-        console.log(userCreated);
-        res.redirect('/');
+        res.render('auth/signup-success')
       })
       .catch(err => {
         console.log(err);
@@ -77,20 +76,6 @@ router.post('/signup', (req, res, next) => {
           message: 'Sorry, something went wrong. Please try again later.'
         });
       });
-
-    // const newUser = new User({
-    //   username,
-    //   password: hashPass
-    // });
-
-    // newUser
-    //   .save()
-    //   .then(() => {
-    //     res.redirect('/profile');
-    //   })
-    //   .catch(err => {
-    //     res.render('auth/signup', { message: 'Something went wrong' });
-    //   });
   });
 });
 

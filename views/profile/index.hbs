@@ -4,7 +4,7 @@
 <section id="profile" class="container mt-sm-1 mb-5">
 
 	<div class="row justify-content-md-center">
-		<div class="col-lg-5 pb-md-1 pl-5 ">
+		<div class="col-lg-4 pb-md-1 pl-5 ">
 			<img src="{{user.imgUrl}}" alt="profile pic" width="100%">
 		</div>
 
@@ -25,15 +25,12 @@
 </section>
 
 <hr>
-
 {{!-- 3 latest posts --}}
 <section>
 
-	<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Posts:</h5>
+	<h5 class="text-secondary text-center mt-5 pt-lg-2 mb-2">Your Posts:</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
-
-
 		{{#each posts}}
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
@@ -57,7 +54,6 @@
 						<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 					</div>
 
-					{{!-- TODO: delete and edit button--}}
 					<div class="d-flex align-items-center">
 						<a href="/edit/{{this._id}}" class="btn-edit mr-3">
 							<i class="fas fa-pen text-secondary-light"></i>
@@ -72,15 +68,19 @@
 		{{/each}}
 	</div>
 
-	<div class="text-right mr-5 pr-5">
+	{{#if noPostMessage}}
+	<p class="text-center text-secondary-light">{{noPostMessage}}</p>
+	{{else}}
+	<div class="text-right text-center mt-2">
 		<a href="/profile/allposts" class="stretched-link">See all posts...</a>
 	</div>
+	{{/if}}
 
 
 	{{!-- 3 latest likes --}}
 	<section>
 
-		<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">Your Likes</h5>
+		<h5 class="text-secondary text-center mt-5 mb-2">Your Likes</h5>
 
 		<div class="d-flex flex-wrap justify-content-center  tutorials">
 
@@ -108,7 +108,6 @@
 							<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 						</div>
 
-						{{!-- TODO: delete and edit button--}}
 						<div class="d-flex align-items-center">
 							<a href="/edit/{{this._tutorial._id}}" class="btn-edit mr-3">
 								<i class="fas fa-pen text-secondary-light"></i>
@@ -123,8 +122,12 @@
 			{{/each}}
 		</div>
 
-		<div class="text-right mr-5 pr-5">
-			<a href="/profile/allposts" class="stretched-link">See all likes...</a>
+		{{#if noLikeMessage}}
+		<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
+		{{else}}
+		<div class="text-right text-center mt-2">
+			<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
 		</div>
+		{{/if}}
 
 	</section>

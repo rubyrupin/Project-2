@@ -22,10 +22,12 @@
   {{!-- FIXME: --}}
   <nav class="navbar navbar-primary navbar-expand-lg navbar-dark bg-primary mb-5">
     <div class="d-flex flex-grow-1 align-items-center">
+
       <a id="logo" class="text-white navbar-brand" href="/">
         <img src="/images/home-page/logo.svg" alt="logo" width="60" class="mr-3">
         Ironlearn
       </a>
+
       <div class=" w-100 text-right">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
           <span class="navbar-toggler-icon"></span>
@@ -33,6 +35,7 @@
       </div>
     </div>
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+
       <ul class="navbar-nav ml-auto flex-nowrap">
         <li class="nav-item">
           <a href="/tutorials/all" class="text-light nav-link mr-4">Tutorials</a>
@@ -47,7 +50,7 @@
           <a href="/profile" class="text-light nav-link mr-4">Profile</a>
         </li>
         <li class="nav-item">
-          <a href="/auth/logout" class="text-light nav-link">Logout</a>
+          <a href="/auth/logout" class="text-light mr-4 nav-link">Logout</a>
         </li>
         {{else}}
         <li class="nav-item">
