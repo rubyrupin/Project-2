@@ -32,40 +32,38 @@
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 
-
 		{{#each allLikes}}
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
-			<a href="{{this._tutorial.link}}" target="_blank"">
-			<div>
-				<h4 class=" {{this._tutorial.color}} text-center
-			 m-3">{{this._tutorial.title}}</h4>
-				<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
-		</div>
-		</a>
-
-		<div class="card-body">
-			{{!-- description --}}
-			<p class="card-text text-secondary">{{this._tutorial.description}}
-			</p>
-			{{!-- category, type and duration --}}
-			<p class="text-secondary-light">
-				{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
-			</p>
-
-			<div class="d-flex align-items-center justify-content-between mt-3">
+			<a href="{{this._tutorial.link}}" target="_blank">
 				<div>
-					<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					<h4 class=" {{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
 				</div>
+			</a>
 
-				<div class="d-flex align-items-center">
+			<div class="card-body">
+				{{!-- description --}}
+				<p class="card-text text-secondary">{{this._tutorial.description}}
+				</p>
+				{{!-- category, type and duration --}}
+				<p class="text-secondary-light">
+					{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
+				</p>
 
+				<div class="d-flex align-items-center justify-content-between mt-3">
+					<div>
+						<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					</div>
+
+					<div class="d-flex align-items-center">
+
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	{{/each}}
+		{{/each}}
 	</div>
 
 	{{!-- {{#if noLikeMessage}}
