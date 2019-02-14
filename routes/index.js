@@ -4,11 +4,7 @@ const Like = require('../models/Like');
 const {
   checkConnected,
   checkCreatorOfTutorial,
-<<<<<<< HEAD
   checkAdmin
-=======
-  checkAdmin,
->>>>>>> f565ecacbe3592207e510d65df9f34043bbec28b
 } = require('../config/middlewares');
 const { assignImg, assignColor } = require('../function/functions');
 
