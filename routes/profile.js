@@ -77,7 +77,10 @@ router.get('/allposts', checkConnected, (req, res, next) => {
 // ==> redirect to ALLPOSTS when succeed
 
 router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
-  Tutorial.findByIdAndDelete(req.params.tutorialId)
+  Promise.all([
+    Tutorial.findByIdAndDelete(req.params.tutorialId),
+    Like.deleteMany({ _tutorial: req.params.tutorialId })
+  ])
     .then(() => {
       res.redirect('/profile/allposts');
     })
@@ -93,17 +96,16 @@ router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
 // GET '/profile/alllikes'
 router.get('/alllikes', checkConnected, (req, res, next) => {
   Like.find({ _user: req.user._id })
-    .sort({ "created_at": -1 })
-    .populate("_tutorial")
+    .sort({ created_at: -1 })
+    .populate('_tutorial')
     .then(allLikes => {
-      console.log("alllikes", allLikes)
-      res.render('profile/alllikes', { allLikes, user: req.user })
+      console.log('alllikes', allLikes);
+      res.render('profile/alllikes', { allLikes, user: req.user });
     })
     .catch(err => {
-      console.log("opps, something went wrong when showing all likes");
+      console.log('opps, something went wrong when showing all likes');
       next(err);
     });
-})
-
+});
 
 module.exports = router;

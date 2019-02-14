@@ -1,5 +1,6 @@
 const express = require('express');
 const Tutorial = require('../models/Tutorial');
+const Like = require('../models/Like');
 const {
   checkConnected,
   checkCreatorOfTutorial
@@ -119,17 +120,15 @@ router.get('/edit-success', (req, res, next) => {
 // GET '/delete/:tutorialId'
 // ==> redirect to profile when succeeded
 router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
-  // Promise.all([
-  //   Tutorial.findByIdAndDelete(req.params.tutorialId),
-  //   Like.deleteMany({ _tutorial: req.params.tutorialId })
-  // ])
-
-  Tutorial.findByIdAndDelete(req.params.tutorialId)
+  Promise.all([
+    Tutorial.findByIdAndDelete(req.params.tutorialId),
+    Like.deleteMany({ _tutorial: req.params.tutorialId })
+  ])
     .then(() => {
       res.redirect('/profile');
     })
     .catch(err => {
-      console.log('Err happened when deleting at allposts ', err);
+      console.log(err);
       next(err);
     });
 });
