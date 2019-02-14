@@ -25,45 +25,39 @@
 
 <hr>
 
-{{!-- See all posts --}}
+{{!-- All likes --}}
 <section>
 
-	<h5 class="text-secondary ml-5 pl-5 mt-5 mb-2">All your liked posts are here:</h5>
+	<h5 class="text-secondary text-center mt-5 mb-2">All Your Likes are Here</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 
 
-		{{#each post}}
+		{{#each allLikes}}
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
 			<div>
-				<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
-				<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
+				<h4 class="{{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+				<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
 			</div>
 
 			<div class="card-body">
 				{{!-- description --}}
-				<p class="card-text text-secondary">{{this.description}}
+				<p class="card-text text-secondary">{{this._tutorial.description}}
 				</p>
 				{{!-- category, type and duration --}}
 				<p class="text-secondary-light">
-					{{this.category}} | {{this.type}} | {{this.duration}} min
+					{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
 				</p>
 
 				<div class="d-flex align-items-center justify-content-between mt-3">
 					<div>
-						<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+						<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 					</div>
 
-					{{!-- TODO: delete and edit button--}}
 					<div class="d-flex align-items-center">
-						<a href="/edit/{{this._id}}" class="btn-edit mr-3">
-							<i class="fas fa-pen text-secondary-light"></i>
-						</a>
-						<a href="/profile/allposts/delete/{{this._id}}" class="btn-delete">
-							<i class="far fa-trash-alt text-secondary-light"></i>
-						</a>
+
 					</div>
 				</div>
 			</div>
@@ -71,6 +65,12 @@
 		{{/each}}
 	</div>
 
+	{{!-- {{#if noLikeMessage}}
+	<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
+	{{else}}
+	<div class="text-right text-center mt-2">
+		<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
+	</div>
+	{{/if}}
 
-
-</section>
+</section> --}}

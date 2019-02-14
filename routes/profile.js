@@ -42,6 +42,7 @@ router.get('/', checkConnected, (req, res, next) => {
       .limit(3)
       .populate('_tutorial')
   ]).then(([posts, likes]) => {
+    console.log(likes)
 
     if (posts.length == 0 && likes.length != 0) {
       res.render('profile/index', {
@@ -80,11 +81,7 @@ router.get('/allposts', checkConnected, (req, res, next) => {
   Tutorial.find({ _creator: req.user._id })
     .sort({ created_at: -1 })
     .then(post => {
-      if (post == null) {
-        res.render('profile/allposts', { post, user: req.user });
-      } else {
-        res.render('profile/allposts', { post, user: req.user });
-      }
+      res.render('profile/allposts', { post, user: req.user });
     })
     .catch(err => {
       console.log('opps, something went wrong when showing all');
@@ -114,34 +111,18 @@ router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
  ************************************/
 // GET '/profile/alllikes'
 router.get('/alllikes', checkConnected, (req, res, next) => {
-  Tutorial.find({ _creator: req.user._id }).sort({ "created_at": -1 })
-    .then(post => {
-      if (post == null) {
-        res.render('profile/alllikes', { post, user: req.user })
-      } else {
-
-        res.render('profile/allposts', { post, user: req.user })
-      }
+  Like.find({ _user: req.user._id })
+    .sort({ "created_at": -1 })
+    .populate("_tutorial")
+    .then(allLikes => {
+      console.log("alllikes", allLikes)
+      res.render('profile/alllikes', { allLikes, user: req.user })
     })
     .catch(err => {
-      console.log("opps, something went wrong when showing all");
+      console.log("opps, something went wrong when showing all likes");
       next(err);
     });
 })
 
-router.get('/', checkConnected, (req, res, next) => {
-  Promise.all([
-    Tutorial.find({ _creator: req.user._id }).sort({ "created_at": -1 }).limit(3),
-    Like.find({ _user: req.user._id }).sort({ "created_at": -1 }).limit(3)
-      .populate("_tutorial")
-  ])
-    .then(([posts, likes]) => {
-      res.render('profile/index', {
-        user: req.user,
-        posts,
-        likes
-      })
-    })
-})
 
 module.exports = router;
