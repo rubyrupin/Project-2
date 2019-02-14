@@ -34,10 +34,9 @@ module.exports = {
 
   checkAdmin: function (req, res, next) {
     if (req.user && req.user.role === "admin") {
-      console.log('hello, im checkIfAdmin');
       next();
     } else {
       res.redirect('/')
     }
   }
-}
+}  

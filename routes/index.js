@@ -4,7 +4,11 @@ const Like = require('../models/Like');
 const {
   checkConnected,
   checkCreatorOfTutorial,
+<<<<<<< HEAD
   checkAdmin
+=======
+  checkAdmin,
+>>>>>>> f565ecacbe3592207e510d65df9f34043bbec28b
 } = require('../config/middlewares');
 const { assignImg, assignColor } = require('../function/functions');
 
@@ -143,7 +147,7 @@ router.get('/admin/delete/:tutorialId', checkAdmin, (req, res, next) => {
     Like.deleteMany({ _tutorial: req.params.tutorialId })
   ])
     .then(() => {
-      res.redirect('/');
+      res.redirect('/tutorials/all');
     })
     .catch(err => {
       console.log('Err when admin attempt to delete', err);
