@@ -49,7 +49,7 @@
 {{!-- Show all tutorials --}}
 <div id="tutorials" class="tutorials d-flex flex-wrap justify-content-center mt-5">
 
-	{{#each express}}
+	{{#each tutorials}}
 	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 		{{!-- FIXME: --}}
 
@@ -71,7 +71,7 @@
 			{{!-- creator --}}
 			{{!-- TODO: link to creator page --}}
 			<p class="text-secondary">
-				<a class="creator" href="#">{{this._creator.username}}</a> share this
+				<a class="creator" href="#">{{this._creator.username}}</a> shared this
 			</p>
 
 			<div class="d-flex align-items-center justify-content-between mt-3">
@@ -92,25 +92,28 @@
 
 {{!-- Script --}}
 <script>
-	let $likeButtons = [...document.querySelectorAll(".like-button")];
+	let $likeButtons = [...document.querySelectorAll(".btn-like")];
 
 	$likeButtons.forEach(($likeButton) => {
 		$likeButton.onclick = function () {
+			if (this.classList.contains('text-secondary-light')) {
+				this.classList.remove('text-secondary-light');
+				this.classList.add('text-red-light');
+			} else {
+				this.classList.remove('text-red-light');
+				this.classList.add('text-secondary-light');
+			}
 
-		}
-	})
+			// get the tutorial id and send req.body._tutorial
+			// use axios.post => /api/likes
+			let _tutorial = this.getAttribute('data-tutorial-id');
 
-	for (let i = 0; i < $likeButtons.length; i++) {
-		$likeButtons[i].onclick = function () {
-			console.log("The button was cliked", i)
-			this.className = "d-block text-primary-light fas fa-heart fa-2x like-button"
-			let _tutorial = this.getAttribute('data-tutorial-id')
-			// axios calls "POST /api/likes" and send req.body._tutorial
 			axios.post('/api/likes', { _tutorial })
 				.then(response => {
-					console.log('The post was liked')
+					this.nextElementSibling.textContent = response.data.nbOfLikes;
+
 				})
 				.catch(err => console.log('Error', err))
 		}
-	}
+	})
 </script>
