@@ -118,19 +118,18 @@ router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
  ************************************/
 // GET '/profile/alllikes'
 router.get('/alllikes', checkConnected, (req, res, next) => {
-  Tutorial.find({ _creator: req.user._id })
-    .sort({ created_at: -1 })
-    .then(post => {
-      if (post == null) {
-        res.render('profile/alllikes', { post, user: req.user });
-      } else {
-        res.render('profile/allposts', { post, user: req.user });
-      }
+  Like.find({ _user: req.user._id })
+    .sort({ "created_at": -1 })
+    .populate("_tutorial")
+    .then(allLikes => {
+      console.log("alllikes", allLikes)
+      res.render('profile/alllikes', { allLikes, user: req.user })
     })
     .catch(err => {
-      console.log('opps, something went wrong when showing all');
+      console.log("opps, something went wrong when showing all likes");
       next(err);
     });
-});
+})
+
 
 module.exports = router;

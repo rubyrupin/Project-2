@@ -1,5 +1,5 @@
 module.exports = {
-  assignImg: function (category) {
+  assignImg: function(category) {
     const rootPath = '/images/tutorials-page/';
     let imgFile = '';
 
@@ -32,11 +32,11 @@ module.exports = {
       case 'html/css':
       case 'react':
       case 'mongodb':
-      case 'express':
         return 'text-white';
+      case 'express':
       case 'javascript':
       case 'nodejs':
-        return 'text-black';
+        return 'text-dark';
     }
   }
 };

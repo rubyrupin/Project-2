@@ -7044,4 +7044,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-like:hover .btn-edit:hover .btn-delete:hover {
   text-decoration: none; }
 
+.card .title {
+  color: #2c4058; }
+
 /*# sourceMappingURL=style.css.map */
