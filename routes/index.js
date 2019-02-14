@@ -1,6 +1,6 @@
 const express = require('express');
 const Tutorial = require('../models/Tutorial');
-const { checkConnected } = require('../config/middlewares');
+const { checkConnected, checkCreatorOfTutorial } = require('../config/middlewares');
 const { assignImg, assignColor } = require('../function/functions');
 
 const router = express.Router();
@@ -45,20 +45,23 @@ router.post('/share', checkConnected, (req, res, next) => {
     .then(newTutorial => {
       console.log('new tutorial created');
       console.log(newTutorial);
-      res.render('protected/share-success');
+      res.redirect('/protected/share-success');
     })
     .catch(err => {
       console.log(err);
       next(err);
     });
 });
+router.get('/protected/share-success', checkConnected, (req, res, next) => {
+  res.render('protected/share-success');
+})
 
 /************************************
  * Edit Tutorial (protected)
  ************************************/
 // GET '/edit/:tutorialId'
 // ==> render edit form
-router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
+router.get('/edit/:tutorialId', checkCreatorOfTutorial, (req, res, next) => {
   Tutorial.findById(req.params.tutorialId)
     .then(tutorial => {
       res.render('protected/edit', { tutorial })
@@ -71,7 +74,7 @@ router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
 
 // POST '/edit/:tutorialId'
 // ==> render edit success if succeed
-router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
+router.post('/edit/:tutorialId', checkCreatorOfTutorial, (req, res, next) => {
   const { link, title, description, type, duration, category } = req.body;
 
   const imgUrl = assignImg(category);
@@ -103,7 +106,7 @@ router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
  ************************************/
 // GET '/delete/:tutorialId'
 // ==> redirect to profile when succeeded
-router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
+router.get('/delete/:tutorialId', checkCreatorOfTutorial, (req, res, next) => {
   Tutorial.findByIdAndDelete(req.params.tutorialId)
     .then(() => {
       res.redirect('/profile')
