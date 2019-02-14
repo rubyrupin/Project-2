@@ -38,24 +38,24 @@
 
       <ul class="navbar-nav ml-auto flex-nowrap">
         <li class="nav-item">
-          <a href="/tutorials/all" {{#if activeClass.tutorials}} class="nav-link mr-4"{{else}}class="nav-link text-light mr-4"{{/if}}
+          <a href="/tutorials/all" {{#if activeClass.tutorials}} class="nav-link text-white mr-4"{{else}}class="nav-link text-success mr-4"{{/if}}
             >Tutorials</a>
         </li>
         <li class="nav-item">
-          <a href="/share" class="text-light nav-link mr-4">Share Tutorial</a>
+          <a href="/share" {{#if activeClass.share}} class="nav-link text-white mr-4"{{else}}class="nav-link text-success mr-4"{{/if}}>Share Tutorial</a>
         </li>
 
         {{!-- Check if user is connected --}}
         {{#if isConnected}}
         <li class="nav-item">
-          <a href="/profile" class="text-light nav-link mr-4">Profile</a>
+          <a href="/profile" {{#if activeClass.profile}} class="nav-link text-white mr-4"{{else}}class="nav-link text-success mr-4"{{/if}}>Profile</a>
         </li>
         <li class="nav-item">
-          <a href="/auth/logout" class="text-light mr-4 nav-link">Logout</a>
+          <a href="/auth/logout" class="text-success mr-4 nav-link">Logout</a>
         </li>
         {{else}}
         <li class="nav-item">
-          <a href="/auth/login" class="text-light nav-link">Login/Signup</a>
+          <a href="/auth/login" {{#if activeClass.login}} class="nav-link text-white mr-4"{{else}}class="nav-link text-sucess mr-4"{{/if}}>Login/Signup</a>
         </li>
         {{/if}}
       </ul>
