@@ -1,5 +1,6 @@
 const express = require('express');
 const Tutorial = require('../models/Tutorial');
+const Like = require('../models/Like');
 const { checkConnected } = require('../config/middlewares');
 const { assignImg, assignColor } = require('../function/functions');
 
@@ -61,13 +62,13 @@ router.post('/share', checkConnected, (req, res, next) => {
 router.get('/edit/:tutorialId', checkConnected, (req, res, next) => {
   Tutorial.findById(req.params.tutorialId)
     .then(tutorial => {
-      res.render('protected/edit', { tutorial })
+      res.render('protected/edit', { tutorial });
     })
     .catch(err => {
       console.log(err);
       next(err);
-    })
-})
+    });
+});
 
 // POST '/edit/:tutorialId'
 // ==> render edit success if succeed
@@ -77,26 +78,30 @@ router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
   const imgUrl = assignImg(category);
   const color = assignColor(category);
 
-  Tutorial.findByIdAndUpdate(req.params.tutorialId, {
-    link,
-    title,
-    description,
-    type,
-    duration,
-    category,
-    imgUrl,
-    color,
-    _creator: req.user._id
-  }, { new: true })
+  Tutorial.findByIdAndUpdate(
+    req.params.tutorialId,
+    {
+      link,
+      title,
+      description,
+      type,
+      duration,
+      category,
+      imgUrl,
+      color,
+      _creator: req.user._id
+    },
+    { new: true }
+  )
     .then(updatedTutorial => {
       console.log(updatedTutorial);
-      res.render('protected/edit-success')
+      res.render('protected/edit-success');
     })
     .catch(err => {
       console.log(err);
       next(err);
-    })
-})
+    });
+});
 
 /************************************
  * Delete Tutorial (protected)
@@ -104,14 +109,20 @@ router.post('/edit/:tutorialId', checkConnected, (req, res, next) => {
 // GET '/delete/:tutorialId'
 // ==> redirect to profile when succeeded
 router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
+  // Promise.all([
+  //   Tutorial.findByIdAndDelete(req.params.tutorialId),
+  //   Like.deleteMany({ _tutorial: req.params.tutorialId })
+  // ])
+
+
   Tutorial.findByIdAndDelete(req.params.tutorialId)
     .then(() => {
-      res.redirect('/profile')
+      res.redirect('/profile');
     })
     .catch(err => {
-      console.log("Err happened when deleting at allposts ", err);
+      console.log('Err happened when deleting at allposts ', err);
       next(err);
-    })
-})
+    });
+});
 
-module.exports = router
+module.exports = router;
