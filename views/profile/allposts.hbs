@@ -37,40 +37,39 @@
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
-			<a href="{{this.link}}" class="title" target="_blank"">
-			<div>
-				<h4 class=" {{this.color}} text-center m-3">{{this.title}}</h4>
-				<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
-		</div>
-		</a>
-
-		<div class="card-body">
-			{{!-- description --}}
-			<p class="card-text text-secondary">{{this.description}}
-			</p>
-			{{!-- category, type and duration --}}
-			<p class="text-secondary-light">
-				{{this.category}} | {{this.type}} | {{this.duration}} min
-			</p>
-
-			<div class="d-flex align-items-center justify-content-between mt-3">
+			<a href="{{this.link}}" target="_blank">
 				<div>
-					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					<h4 class=" {{this.color}} text-center m-3">{{this.title}}</h4>
+					<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
 				</div>
+			</a>
 
-				{{!-- TODO: delete and edit button--}}
-				<div class="d-flex align-items-center">
-					<a href="/edit/{{this._id}}" class="btn-edit mr-3">
-						<i class="fas fa-pen text-secondary-light"></i>
-					</a>
-					<a href="/profile/allposts/delete/{{this._id}}" class="btn-delete">
-						<i class="far fa-trash-alt text-secondary-light"></i>
-					</a>
+			<div class="card-body">
+				{{!-- description --}}
+				<p class="card-text text-secondary">{{this.description}}
+				</p>
+				{{!-- category, type and duration --}}
+				<p class="text-secondary-light">
+					{{this.category}} | {{this.type}} | {{this.duration}} min
+				</p>
+
+				<div class="d-flex align-items-center justify-content-between mt-3">
+					<div>
+						<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					</div>
+
+					<div class="d-flex align-items-center">
+						<a href="/edit/{{this._id}}" class="btn-edit mr-3">
+							<i class="fas fa-pen text-secondary-light"></i>
+						</a>
+						<a href="/profile/allposts/delete/{{this._id}}" class="btn-delete">
+							<i class="far fa-trash-alt text-secondary-light"></i>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	{{/each}}
+		{{/each}}
 	</div>
 
 	<div class="text-right text-center mt-5">

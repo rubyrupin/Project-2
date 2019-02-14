@@ -1,6 +1,6 @@
 {{!-- profile/all likes --}}
 
-<section id="profile" class="container mt-sm-1 mb-5">
+<section class="container mt-sm-1 mb-5">
 
 	<div class="row justify-content-md-center">
 		<div class="col-lg-5 pb-md-1 pl-5 ">
@@ -28,7 +28,7 @@
 {{!-- All likes --}}
 <section>
 
-	<h5 class="text-secondary text-center mt-5 mb-2">All Your Likes are Here</h5>
+	<h5 class="text-secondary text-center mt-5 mb-2">All Likes</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 
@@ -36,29 +36,35 @@
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
-			<a href="{{this._tutorial.link}}" class="title" target="_blank">
+			<a href="{{this.link}}" target="_blank">
 				<div>
-					<h4 class=" {{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
-					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
+					<h4 class=" {{this.color}} text-center m-3">{{this.title}}</h4>
+					<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
 				</div>
 			</a>
 
 			<div class="card-body">
 				{{!-- description --}}
-				<p class="card-text text-secondary">{{this._tutorial.description}}
+				<p class="card-text text-secondary">{{this.description}}
 				</p>
 				{{!-- category, type and duration --}}
 				<p class="text-secondary-light">
-					{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
+					{{this.category}} | {{this.type}} | {{this.duration}} min
+				</p>
+				{{!-- creator --}}
+				<p class="text-secondary">
+					<a class="creator" href="#">{{this._creator.username}}</a> shared this
 				</p>
 
 				<div class="d-flex align-items-center justify-content-between mt-3">
 					<div>
-						<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+						<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 					</div>
-
+					{{!-- like --}}
 					<div class="d-flex align-items-center">
+						<i class="d-block fas fa-heart fa-2x text-red-light btn-like" data-tutorial-id="{{this._id}}"></i>
 
+						<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 					</div>
 				</div>
 			</div>
@@ -66,12 +72,36 @@
 		{{/each}}
 	</div>
 
-	{{!-- {{#if noLikeMessage}}
-	<p class="text-center text-secondary-light">{{noLikeMessage}}</p>
-	{{else}}
-	<div class="text-right text-center mt-2">
-		<a href="/profile/alllikes" class="stretched-link">See all likes...</a>
+	<div class="text-right text-center mt-5">
+		<a href="/profile" class="stretched-link">Go back to your Profile Page</a>
 	</div>
-	{{/if}}
 
-</section> --}}
+</section>
+
+{{!-- Script --}}
+<script>
+	let $likeButtons = [...document.querySelectorAll(".btn-like")];
+
+	$likeButtons.forEach(($likeButton) => {
+		$likeButton.onclick = function () {
+			if (this.classList.contains('text-secondary-light')) {
+				this.classList.remove('text-secondary-light');
+				this.classList.add('text-red-light');
+			} else {
+				this.classList.remove('text-red-light');
+				this.classList.add('text-secondary-light');
+			}
+
+			// get the tutorial id and send req.body._tutorial
+			// use axios.post => /api/likes
+			let _tutorial = this.getAttribute('data-tutorial-id');
+
+			axios.post('/api/likes', { _tutorial })
+				.then(response => {
+					this.nextElementSibling.textContent = response.data.nbOfLikes;
+
+				})
+				.catch(err => console.log('Error', err))
+		}
+	})
+</script>

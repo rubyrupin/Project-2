@@ -1,0 +1,140 @@
+{{!-- profile/others --}}
+{{!-- Other User's Profile Page --}}
+
+<section class="container mt-sm-1 mb-5">
+
+  <div class="row justify-content-md-center">
+    <div class="col-lg-4 pb-md-1 pl-5 ">
+      <img src="{{otherUser.imgUrl}}" alt="profile pic" width="100%">
+    </div>
+
+    <div class="col-lg ml-lg-5 pr-lg-5 text-lg-left text-center">
+      <h3 class="mt-4 text-dark">{{otherUser.username}}</h3>
+
+      <div class="d-flex align-items-center">
+        <p class="mt-3 text-secondary mr-3">{{otherUser.description}}</p>
+      </div>
+
+      <a href="/profile" class="btn btn-outline-blue mt-3 mr-4">Go back to your Profile page</a>
+      <a href="/tutorials/all" class="btn btn-outline-red mt-3 mr-4">See all Tutorials</a>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+{{!-- 3 latest posts --}}
+<section>
+  <h5 class="text-secondary text-center mt-5 pt-lg-2 mb-2">{{otherUser.username}}'s Posts:</h5>
+
+  <div class="d-flex flex-wrap justify-content-center  tutorials">
+    {{#each posts}}
+    <div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
+
+      {{!-- title --}}
+      <a href="{{this.link}}" class="title" target="_blank">
+        <div>
+          <h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
+          <img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
+        </div>
+      </a>
+
+      <div class="card-body">
+        {{!-- description --}}
+        <p class="card-text text-secondary">{{this.description}}
+        </p>
+        {{!-- category, type and duration --}}
+        <p class="text-secondary-light">
+          {{this.category}} | {{this.type}} | {{this.duration}} min
+        </p>
+
+        <div class="d-flex align-items-center justify-content-between mt-3">
+          <div>
+            <a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  {{#if noPostMessage}}
+  <p class="text-center text-secondary-light">{{noPostMessage}}</p>
+  {{/if}}
+
+</section>
+
+{{!-- 3 latest likes --}}
+<section>
+  <h5 class="text-secondary text-center mt-5 mb-2">{{otherUser.username}}'s Likes</h5>
+
+  <div class="d-flex flex-wrap justify-content-center  tutorials">
+
+    {{#each likes}}
+    <div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
+
+      {{!-- title --}}
+      <a href="{{this._tutorial.link}}" target="_blank">
+        <div>
+          <h4 class=" {{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+          <img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
+        </div>
+      </a>
+
+      <div class="card-body">
+        {{!-- description --}}
+        <p class="card-text text-secondary">{{this._tutorial.description}}
+        </p>
+        {{!-- category, type and duration --}}
+        <p class="text-secondary-light">
+          {{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
+        </p>
+        {{!-- creator --}}
+        {{!-- FIXME: --}}
+        {{!-- <p class="text-secondary">
+          <a class="creator" href="#">{{this._creator.username}}</a> shared this
+        </p> --}}
+
+        <div class="d-flex align-items-center justify-content-between mt-3">
+          <div>
+            <a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  {{#if noLikeMessage}}
+  <p class="text-center text-secondary-light">{{noLikeMessage}}</p>
+  {{/if}}
+
+</section>
+
+{{!-- script --}}
+<script>
+  let $likeButtons = [...document.querySelectorAll(".btn-like")];
+
+  $likeButtons.forEach(($likeButton) => {
+    $likeButton.onclick = function () {
+      if (this.classList.contains('text-secondary-light')) {
+        this.classList.remove('text-secondary-light');
+        this.classList.add('text-red-light');
+      } else {
+        this.classList.remove('text-red-light');
+        this.classList.add('text-secondary-light');
+      }
+
+      // get the tutorial id and send req.body._tutorial
+      // use axios.post => /api/likes
+      let _tutorial = this.getAttribute('data-tutorial-id');
+
+      axios.post('/api/likes', { _tutorial })
+        .then(response => {
+          this.nextElementSibling.textContent = response.data.nbOfLikes;
+
+        })
+        .catch(err => console.log('Error', err))
+    }
+  })
+</script>
