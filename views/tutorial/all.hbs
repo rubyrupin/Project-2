@@ -7,8 +7,9 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
-	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -74,7 +75,7 @@
 			{{!-- creator --}}
 			{{!-- TODO: link to creator page --}}
 			<p class="text-secondary">
-				<a class="creator" href="#">{{this._creator.username}}</a> shared this
+				<a class="creator" href="/profile/{{this._creator.username}}">{{this._creator.username}}</a> shared this
 			</p>
 
 			<div class="d-flex align-items-center justify-content-between mt-3">
@@ -83,9 +84,8 @@
 				</div>
 
 				<div class="d-flex align-items-center">
-					{{!-- FIXME: --}}
 					<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
-					 data-tutorial-id="{{this._id}}"></i>
+						data-tutorial-id="{{this._id}}"></i>
 
 					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 				</div>
@@ -123,10 +123,3 @@
 		}
 	})
 </script>
-
-{{#if isAdmin}}
-sdhfjksfhdjkl
-<a href="/delete/{{this._id}}" class="btn-delete">
-	<i class="far fa-trash-alt text-secondary-light"></i>
-</a>
-{{/if}}

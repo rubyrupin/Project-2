@@ -1,7 +1,7 @@
 {{!-- profile/index --}}
 {{!-- Profile Page --}}
 
-<section id="profile" class="container mt-sm-1 mb-5">
+<section class="container mt-sm-1 mb-5">
 
 	<div class="row justify-content-md-center">
 		<div class="col-lg-4 pb-md-1 pl-5 ">
@@ -90,38 +90,40 @@
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
-			<a href="{{this.link}}" class="title" target="_blank"">
-			<div>
-				<h4 class=" {{this._tutorial.color}}
-			 text-center m-3">{{this._tutorial.title}}</h4>
-				<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
-		</div>
-		</a>
-
-		<div class="card-body">
-			{{!-- description --}}
-			<p class="card-text text-secondary">{{this._tutorial.description}}
-			</p>
-			{{!-- category, type and duration --}}
-			<p class="text-secondary-light">
-				{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
-			</p>
-
-			<div class="d-flex align-items-center justify-content-between mt-3">
+			<a href="{{this._tutorial.link}}" target="_blank">
 				<div>
-					<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					<h4 class=" {{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
 				</div>
+			</a>
 
-				<div class="d-flex align-items-center">
-					<i class="d-block fas fa-heart fa-2x text-red-light btn-like" data-tutorial-id="{{this._tutorial._id}}"></i>
+			<div class="card-body">
+				{{!-- description --}}
+				<p class="card-text text-secondary">{{this._tutorial.description}}
+				</p>
+				{{!-- category, type and duration --}}
+				<p class="text-secondary-light">
+					{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
+				</p>
+				{{!-- creator --}}
+				<p class="text-secondary">
+					<a class="creator" href="#">{{this._tutorial._creator.username}}</a> shared this
+				</p>
 
-					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._tutorial._id}}">{{this._tutorial.nbOfLikes}}</p>
+				<div class="d-flex align-items-center justify-content-between mt-3">
+					<div>
+						<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					</div>
+					{{!-- like --}}
+					<div class="d-flex align-items-center">
+						<i class="d-block fas fa-heart fa-2x text-red-light btn-like" data-tutorial-id="{{this._tutorial._id}}"></i>
+
+						<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._tutorial._id}}">{{this._tutorial.nbOfLikes}}</p>
+					</div>
 				</div>
-
 			</div>
 		</div>
-	</div>
-	{{/each}}
+		{{/each}}
 	</div>
 
 	{{#if noLikeMessage}}
@@ -133,10 +135,6 @@
 	{{/if}}
 
 </section>
-
-{{#each latestLikes}}
-<p>{{this._tutorial._id}}</p>
-{{/each}}
 
 
 {{!-- script --}}
