@@ -32,6 +32,12 @@ const Like = require('../models/Like');
 //     })
 // })
 
+/************************************
+ * PROFILE PAGE
+ ************************************/
+// GET '/profile'
+// ==> view profile, show 3 latest posts and likes
+
 router.get('/', checkConnected, (req, res, next) => {
   Promise.all([
     Tutorial.find({ _creator: req.user._id })
@@ -99,6 +105,26 @@ router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
     })
     .catch(err => {
       console.log('Err happened when deleting at allposts ', err);
+      next(err);
+    });
+});
+
+/************************************
+ * See all likes (protected)
+ ************************************/
+// GET '/profile/alllikes'
+router.get('/alllikes', checkConnected, (req, res, next) => {
+  Tutorial.find({ _creator: req.user._id })
+    .sort({ created_at: -1 })
+    .then(post => {
+      if (post == null) {
+        res.render('profile/alllikes', { post, user: req.user });
+      } else {
+        res.render('profile/allposts', { post, user: req.user });
+      }
+    })
+    .catch(err => {
+      console.log('opps, something went wrong when showing all');
       next(err);
     });
 });
