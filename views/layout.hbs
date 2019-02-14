@@ -38,7 +38,8 @@
 
       <ul class="navbar-nav ml-auto flex-nowrap">
         <li class="nav-item">
-          <a href="/tutorials/all" class="text-light nav-link mr-4">Tutorials</a>
+          <a href="/tutorials/all" {{#if activeClass.tutorials}} class="nav-link mr-4"{{else}}class="nav-link text-light mr-4"{{/if}}
+            >Tutorials</a>
         </li>
         <li class="nav-item">
           <a href="/share" class="text-light nav-link mr-4">Share Tutorial</a>

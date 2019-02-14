@@ -19,17 +19,41 @@ router.get('/', checkConnected, (req, res, next) => {
     Like.find({ _user: req.user._id })
       .sort({ created_at: -1 })
       .limit(3)
-      .populate('_tutorial')
-      .populate('_tutorial._creator')
+      .populate({
+        path: '_tutorial',
+        populate: {
+          path: '_creator'
+        }
+      })
       .lean()
   ])
     .then(([posts, likes]) => {
-      console.log(likes);
-      res.render('profile/index', {
-        user: req.user,
-        posts,
-        likes
-      });
+      if (posts.length == 0 && likes.length != 0) {
+        res.render('profile/index', {
+          user: req.user,
+          noPostMessage: 'No posts yet',
+          likes
+        });
+      } else if (likes.length == 0 && posts.length != 0) {
+        res.render('profile/index', {
+          user: req.user,
+          noLikeMessage: 'No likes yet',
+          posts
+        });
+      } else if (likes.length == 0 && posts.length == 0) {
+        console.log('here');
+        res.render('profile/index', {
+          user: req.user,
+          noLikeMessage: 'No likes yet',
+          noPostMessage: 'No posts yet'
+        });
+      } else {
+        res.render('profile/index', {
+          user: req.user,
+          posts,
+          likes
+        });
+      }
     })
 
     // .then(([posts, allLikesFromConnectedUser]) => {
@@ -124,21 +148,13 @@ router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
 router.get('/alllikes', checkConnected, (req, res, next) => {
   Like.find({ _user: req.user._id })
     .sort({ created_at: -1 })
-    .populate('_tutorial')
-    .then(allLikesFromConnectedUser => {
-      let allLikes = [];
-      allLikesFromConnectedUser.forEach(tutorial => {
-        Tutorial.findById(tutorial._tutorial._id)
-          .populate('_creator')
-          .then(likedTutorial => {
-            console.log(likedTutorial);
-            allLikes.push(likedTutorial);
-          })
-          .catch(err => {
-            console.log(err);
-            next(err);
-          });
-      });
+    .populate({
+      path: '_tutorial',
+      populate: {
+        path: '_creator'
+      }
+    })
+    .then(allLikes => {
       res.render('profile/alllikes', { user: req.user, allLikes });
     })
     .catch(err => {
