@@ -9,8 +9,9 @@ module.exports = {
       res.redirect('/auth/login');
     }
   },
+
   // Check if the connected user is the creator of the tutorial
-  checkCreatorOfTutorial: function(req,res,next) {
+  checkCreatorOfTutorial: function (req, res, next) {
     if (!req.user) {
       res.redirect('/auth/login');
     }
@@ -28,6 +29,16 @@ module.exports = {
         // The same as `.catch(next)`
         .catch(err => next(err))
     }
-    
+
   },
+
+  checkIfAdmin: function (req, res, next) {
+    if (req.user & req.user.role === "admin") {
+      console.log('hello, im checkIfAdmin');
+      next();
+    } else {
+      res.redirect('/')
+    }
+    next();
+  }
 }

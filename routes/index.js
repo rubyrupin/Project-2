@@ -3,7 +3,8 @@ const Tutorial = require('../models/Tutorial');
 const Like = require('../models/Like');
 const {
   checkConnected,
-  checkCreatorOfTutorial
+  checkCreatorOfTutorial,
+  checkIfAdmin,
 } = require('../config/middlewares');
 const { assignImg, assignColor } = require('../function/functions');
 
@@ -132,5 +133,25 @@ router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
       next(err);
     });
 });
+
+/************************************
+ * ADMIN Delete Tutorial (protected)
+ ************************************/
+
+router.get('admin/delete/:tutorialId', checkIfAdmin, (req, res, next) => {
+  Promise.all([
+    Tutorial.findByIdAndDelete(req.params.tutorialId),
+    Like.deleteMany({ _tutorial: req.params.tutorialId })
+  ])
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch(err => {
+      console.log("Err when admin attempt to delete", err);
+      next(err);
+    })
+});
+
+
 
 module.exports = router;
