@@ -6,9 +6,8 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
-	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
-		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -55,7 +54,7 @@
 
 		{{!-- title --}}
 		<div>
-			<a href="{{this.link}}" target="_blank">
+			<a href="{{this.link}}" class="title" target="_blank">
 				<h4 class=" {{this.color}} text-center m-3">{{this.title}}</h4>
 				<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
 			</a>
@@ -84,7 +83,7 @@
 				<div class="d-flex align-items-center">
 
 					<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
-						data-tutorial-id="{{this._id}}"></i>
+					 data-tutorial-id="{{this._id}}"></i>
 
 					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 				</div>
