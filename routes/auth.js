@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs'); 
-
+const { checkConnected } = require('../config/middlewares')
 
 const router = express.Router();
 const bcryptSalt = 10;
@@ -67,16 +67,24 @@ router.post('/signup', (req, res, next) => {
 
     User.create(newUser)
       .then(userCreated => {
-        res.render('auth/signup-success')
+        // req.login logs in the user given in parameters
+        req.login(userCreated, () => {
+          res.redirect('/auth/signup-success')
+        })
       })
       .catch(err => {
         console.log(err);
-        res.render('/auth/signup', {
+        res.render('auth/signup', {
           message: 'Sorry, something went wrong. Please try again later.'
         });
       });
   });
 });
+
+// TODO: protect the router
+router.get('/signup-success', checkConnected, (req, res) => {
+  res.render('auth/signup-success')
+})
 
 /****************************************
  * Logout
