@@ -42,25 +42,24 @@ router.get('/', checkConnected, (req, res, next) => {
       .limit(3)
       .populate('_tutorial')
   ]).then(([posts, likes]) => {
-
     if (posts.length == 0 && likes.length != 0) {
       res.render('profile/index', {
         user: req.user,
-        noPostMessage: 'No post yet',
+        noPostMessage: 'No posts yet',
         likes
       });
     } else if (likes.length == 0 && posts.length != 0) {
       res.render('profile/index', {
         user: req.user,
-        noLikeMessage: 'No like yet',
+        noLikeMessage: 'No likes yet',
         posts
       });
     } else if (likes.length == 0 && posts.length == 0) {
       console.log('here');
       res.render('profile/index', {
         user: req.user,
-        noLikeMessage: 'No like yet',
-        noPostMessage: 'No post yet'
+        noLikeMessage: 'No likes yet',
+        noPostMessage: 'No posts yet'
       });
     } else {
       res.render('profile/index', {
@@ -80,11 +79,7 @@ router.get('/allposts', checkConnected, (req, res, next) => {
   Tutorial.find({ _creator: req.user._id })
     .sort({ created_at: -1 })
     .then(post => {
-      if (post == null) {
-        res.render('profile/allposts', { post, user: req.user });
-      } else {
-        res.render('profile/allposts', { post, user: req.user });
-      }
+      res.render('profile/allposts', { post, user: req.user });
     })
     .catch(err => {
       console.log('opps, something went wrong when showing all');

@@ -56,7 +56,6 @@ router.post('/signup', (req, res, next) => {
     }
 
     // Validation success
-    //TODO: automatically login
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
