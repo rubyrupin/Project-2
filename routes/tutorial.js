@@ -11,6 +11,7 @@ const router = express.Router();
 router.get('/all', checkConnected, (req, res, next) => {
   Promise.all([
     Tutorial.find()
+      .sort({ created_at: -1 })
       .populate('_creator')
       .lean(),
     Like.find({ _user: req.user._id })
@@ -35,11 +36,15 @@ router.get('/all', checkConnected, (req, res, next) => {
 /***************************************
  * HTML & CSS
  ***************************************/
-router.get('/html-css', (req, res, next) => {
+router.get('/html-css', checkConnected, (req, res, next) => {
   Promise.all([
-    Tutorial.find({ category: 'html/css' }).lean(),
+    Tutorial.find({ category: 'html/css' })
+      .sort({ created_at: -1 })
+      .populate('_creator')
+      .lean(),
     Like.find({ _user: req.user._id })
   ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/html-css', {
         tutorials: tutorials.map(tutorial => ({
@@ -59,11 +64,15 @@ router.get('/html-css', (req, res, next) => {
 /***************************************
  * Javascript
  ***************************************/
-router.get('/javascript', (req, res, next) => {
+router.get('/javascript', checkConnected, (req, res, next) => {
   Promise.all([
-    Tutorial.find({ category: 'javascript' }).lean(),
+    Tutorial.find({ category: 'javascript' })
+      .sort({ created_at: -1 })
+      .populate('_creator')
+      .lean(),
     Like.find({ _user: req.user._id })
   ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/javascript', {
         tutorials: tutorials.map(tutorial => ({
@@ -83,11 +92,15 @@ router.get('/javascript', (req, res, next) => {
 /***************************************
  * React
  ***************************************/
-router.get('/react', (req, res, next) => {
+router.get('/react', checkConnected, (req, res, next) => {
   Promise.all([
-    Tutorial.find({ category: 'react' }).lean(),
+    Tutorial.find({ category: 'react' })
+      .sort({ created_at: -1 })
+      .populate('_creator')
+      .lean(),
     Like.find({ _user: req.user._id })
   ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/react', {
         tutorials: tutorials.map(tutorial => ({
@@ -107,11 +120,15 @@ router.get('/react', (req, res, next) => {
 /***************************************
  * Nodejs
  ***************************************/
-router.get('/nodejs', (req, res, next) => {
+router.get('/nodejs', checkConnected, (req, res, next) => {
   Promise.all([
-    Tutorial.find({ category: 'nodejs' }).lean(),
+    Tutorial.find({ category: 'nodejs' })
+      .sort({ created_at: -1 })
+      .populate('_creator')
+      .lean(),
     Like.find({ _user: req.user._id })
   ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/nodejs', {
         tutorials: tutorials.map(tutorial => ({
@@ -128,15 +145,18 @@ router.get('/nodejs', (req, res, next) => {
     });
 });
 
-
 /***************************************
  * Express
  ***************************************/
-router.get('/express', (req, res, next) => {
+router.get('/express', checkConnected, (req, res, next) => {
   Promise.all([
-    Tutorial.find({ category: 'express' }).lean(),
+    Tutorial.find({ category: 'express' })
+      .sort({ created_at: -1 })
+      .populate('_creator')
+      .lean(),
     Like.find({ _user: req.user._id })
   ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/express', {
         tutorials: tutorials.map(tutorial => ({
@@ -153,15 +173,18 @@ router.get('/express', (req, res, next) => {
     });
 });
 
-
 /***************************************
  * Mongodb
  ***************************************/
-router.get('/mongodb', (req, res, next) => {
+router.get('/mongodb', checkConnected, (req, res, next) => {
   Promise.all([
-    Tutorial.find({ category: 'mongodb' }).lean(),
+    Tutorial.find({ category: 'mongodb' })
+      .sort({ created_at: -1 })
+      .populate('_creator')
+      .lean(),
     Like.find({ _user: req.user._id })
   ])
+
     .then(([tutorials, likesFromConnectedUser]) => {
       res.render('tutorial/mongodb', {
         tutorials: tutorials.map(tutorial => ({
@@ -177,6 +200,5 @@ router.get('/mongodb', (req, res, next) => {
       next(err);
     });
 });
-
 
 module.exports = router;

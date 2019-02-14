@@ -1,6 +1,6 @@
-{{!-- 'tutorial/all' --}}
+{{!-- 'tutorial/html-css' --}}
 
-<h2 class="text-dark text-center">HTML/CSS</h2>
+<h2 class="text-dark text-center">Tutorials</h2>
 
 {{!-- category nav --}}
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
@@ -48,11 +48,10 @@
 </nav>
 
 {{!-- Show all tutorials --}}
-<div id="tutorials" class="tutorials d-flex flex-wrap justify-content-center mt-5">
+<div class="tutorials d-flex flex-wrap justify-content-center mt-5">
 
 	{{#each tutorials}}
 	<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
-		{{!-- FIXME: --}}
 
 		{{!-- title --}}
 		<div>
@@ -80,33 +79,18 @@
 					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
 				</div>
 
-				{{#if isAdmin}}
-				<p>helloooooo</p>
-				<a href="/delete/{{this._id}}" class="btn-delete">
-					<i class="far fa-trash-alt text-secondary-light"></i>
-				</a>
-				{{/if}}
-
-
 				<div class="d-flex align-items-center">
+
 					<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
 						data-tutorial-id="{{this._id}}"></i>
 
-					<p class="ml-3 text-secondary-light h5 mb-0">{{this.nbOfLikes}}</p>
+					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	{{/each}}
 </div>
-
-
-{{#if isAdmin}}
-<a href="/delete/{{this._id}}" class="btn-delete">
-	<i class="far fa-trash-alt text-secondary-light"></i>
-</a>
-<p>helloooooo</p>
-{{/if}}
 
 
 {{!-- Script --}}

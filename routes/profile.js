@@ -32,6 +32,12 @@ const Like = require('../models/Like');
 //     })
 // })
 
+/************************************
+ * PROFILE PAGE
+ ************************************/
+// GET '/profile'
+// ==> view profile, show 3 latest posts and likes
+
 router.get('/', checkConnected, (req, res, next) => {
   Promise.all([
     Tutorial.find({ _creator: req.user._id })
@@ -42,26 +48,24 @@ router.get('/', checkConnected, (req, res, next) => {
       .limit(3)
       .populate('_tutorial')
   ]).then(([posts, likes]) => {
-    console.log(likes)
-
     if (posts.length == 0 && likes.length != 0) {
       res.render('profile/index', {
         user: req.user,
-        noPostMessage: 'No post yet',
+        noPostMessage: 'No posts yet',
         likes
       });
     } else if (likes.length == 0 && posts.length != 0) {
       res.render('profile/index', {
         user: req.user,
-        noLikeMessage: 'No like yet',
+        noLikeMessage: 'No likes yet',
         posts
       });
     } else if (likes.length == 0 && posts.length == 0) {
       console.log('here');
       res.render('profile/index', {
         user: req.user,
-        noLikeMessage: 'No like yet',
-        noPostMessage: 'No post yet'
+        noLikeMessage: 'No likes yet',
+        noPostMessage: 'No posts yet'
       });
     } else {
       res.render('profile/index', {
@@ -104,7 +108,6 @@ router.get('/allposts/delete/:tutorialId', checkConnected, (req, res, next) => {
       next(err);
     });
 });
-
 
 /************************************
  * See all likes (protected)
