@@ -35,37 +35,39 @@
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
+			<a href="{{this.link}}" target="_blank"">
 			<div>
-				<h4 class="{{this.color}} text-center m-3">{{this.title}}</h4>
+				<h4 class=" {{this.color}} text-center m-3">{{this.title}}</h4>
 				<img src="{{this.imgUrl}}" class="card-img-top" alt="category: {{this.category}}">
-			</div>
+		</div>
+		</a>
 
-			<div class="card-body">
-				{{!-- description --}}
-				<p class="card-text text-secondary">{{this.description}}
-				</p>
-				{{!-- category, type and duration --}}
-				<p class="text-secondary-light">
-					{{this.category}} | {{this.type}} | {{this.duration}} min
-				</p>
+		<div class="card-body">
+			{{!-- description --}}
+			<p class="card-text text-secondary">{{this.description}}
+			</p>
+			{{!-- category, type and duration --}}
+			<p class="text-secondary-light">
+				{{this.category}} | {{this.type}} | {{this.duration}} min
+			</p>
 
-				<div class="d-flex align-items-center justify-content-between mt-3">
-					<div>
-						<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
-					</div>
+			<div class="d-flex align-items-center justify-content-between mt-3">
+				<div>
+					<a href="{{this.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+				</div>
 
-					<div class="d-flex align-items-center">
-						<a href="/edit/{{this._id}}" class="btn-edit mr-3">
-							<i class="fas fa-pen text-secondary-light"></i>
-						</a>
-						<a href="/delete/{{this._id}}" class="btn-delete">
-							<i class="far fa-trash-alt text-secondary-light"></i>
-						</a>
-					</div>
+				<div class="d-flex align-items-center">
+					<a href="/edit/{{this._id}}" class="btn-edit mr-3">
+						<i class="fas fa-pen text-secondary-light"></i>
+					</a>
+					<a href="/delete/{{this._id}}" class="btn-delete">
+						<i class="far fa-trash-alt text-secondary-light"></i>
+					</a>
 				</div>
 			</div>
 		</div>
-		{{/each}}
+	</div>
+	{{/each}}
 	</div>
 
 	{{#if noPostMessage}}
@@ -89,37 +91,40 @@
 			<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 				{{!-- title --}}
+				<a href="{{this._tutorial.link}}" target="_blank"">
 				<div>
-					<h4 class="{{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
+					<h4 class=" {{this._tutorial.color}} text-center
+				 m-3">{{this._tutorial.title}}</h4>
 					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
-				</div>
+			</div>
+			</a>
 
-				<div class="card-body">
-					{{!-- description --}}
-					<p class="card-text text-secondary">{{this._tutorial.description}}
-					</p>
-					{{!-- category, type and duration --}}
-					<p class="text-secondary-light">
-						{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
-					</p>
+			<div class="card-body">
+				{{!-- description --}}
+				<p class="card-text text-secondary">{{this._tutorial.description}}
+				</p>
+				{{!-- category, type and duration --}}
+				<p class="text-secondary-light">
+					{{this._tutorial.category}} | {{this._tutorial.type}} | {{this._tutorial.duration}} min
+				</p>
 
-					<div class="d-flex align-items-center justify-content-between mt-3">
-						<div>
-							<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
-						</div>
+				<div class="d-flex align-items-center justify-content-between mt-3">
+					<div>
+						<a href="{{this._tutorial.link}}" target="_blank" class="btn btn-outline-blue">Learn now</a>
+					</div>
 
-						<div class="d-flex align-items-center">
-							<a href="/edit/{{this._tutorial._id}}" class="btn-edit mr-3">
-								<i class="fas fa-pen text-secondary-light"></i>
-							</a>
-							<a href="/delete/{{this._tutorial_id}}" class="btn-delete">
-								<i class="far fa-trash-alt text-secondary-light"></i>
-							</a>
-						</div>
+					<div class="d-flex align-items-center">
+						<a href="/edit/{{this._tutorial._id}}" class="btn-edit mr-3">
+							<i class="fas fa-pen text-secondary-light"></i>
+						</a>
+						<a href="/delete/{{this._tutorial_id}}" class="btn-delete">
+							<i class="far fa-trash-alt text-secondary-light"></i>
+						</a>
 					</div>
 				</div>
 			</div>
-			{{/each}}
+		</div>
+		{{/each}}
 		</div>
 
 		{{#if noLikeMessage}}
