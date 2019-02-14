@@ -98,9 +98,19 @@ router.get('/alllikes', checkConnected, (req, res, next) => {
   Like.find({ _user: req.user._id })
     .sort({ created_at: -1 })
     .populate('_tutorial')
-    .then(allLikes => {
-      console.log('alllikes', allLikes);
-      res.render('profile/alllikes', { allLikes, user: req.user });
+    .then(allLikesFromConnectedUser => {
+      let allLikes = [];
+      allLikesFromConnectedUser.forEach(tutorial => {
+        Tutorial.findById(tutorial._tutorial._id).populate('_creator')
+          .then(likedTutorial => {
+            allLikes.push(likedTutorial);
+            res.render('profile/alllikes', { user: req.user, allLikes });
+          })
+          .catch(err => {
+            console.log(err);
+            next(err);
+          });
+      });
     })
     .catch(err => {
       console.log('opps, something went wrong when showing all likes');
