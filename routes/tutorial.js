@@ -10,17 +10,17 @@ const router = express.Router();
 
 // The slug could be: 'all', 'html-css', 'react', ...
 router.get('/:slug', checkConnected, (req, res, next) => {
-  let { slug } = req.params
-  let filter = {}
+  let { slug } = req.params;
+  let filter = {};
 
   switch (slug) {
     case 'all':
-      break
-    case 'html-css': 
-      filter.category = 'html/css' 
-      break
-    default: 
-      filter.category = slug 
+      break;
+    case 'html-css':
+      filter.category = 'html/css';
+      break;
+    default:
+      filter.category = slug;
   }
 
   Promise.all([
@@ -32,7 +32,7 @@ router.get('/:slug', checkConnected, (req, res, next) => {
   ])
 
     .then(([tutorials, likesFromConnectedUser]) => {
-      res.render('tutorial/'+slug, {
+      res.render('tutorial/' + slug, {
         tutorials: tutorials.map(tutorial => ({
           ...tutorial,
           isLiked: likesFromConnectedUser.some(like =>
@@ -45,6 +45,6 @@ router.get('/:slug', checkConnected, (req, res, next) => {
       console.log(err);
       next(err);
     });
-})
+});
 
 module.exports = router;

@@ -1,6 +1,10 @@
 const express = require('express');
 const Tutorial = require('../models/Tutorial');
-const { checkConnected, checkCreatorOfTutorial } = require('../config/middlewares');
+const Like = require('../models/Like');
+const {
+  checkConnected,
+  checkCreatorOfTutorial
+} = require('../config/middlewares');
 const { assignImg, assignColor } = require('../function/functions');
 
 const router = express.Router();
@@ -45,16 +49,17 @@ router.post('/share', checkConnected, (req, res, next) => {
     .then(newTutorial => {
       console.log('new tutorial created');
       console.log(newTutorial);
-      res.redirect('/protected/share-success');
+      res.redirect('/share-success');
     })
     .catch(err => {
       console.log(err);
       next(err);
     });
 });
-router.get('/protected/share-success', checkConnected, (req, res, next) => {
+
+router.get('/share-success', checkConnected, (req, res, next) => {
   res.render('protected/share-success');
-})
+});
 
 /************************************
  * Edit Tutorial (protected)
@@ -64,13 +69,13 @@ router.get('/protected/share-success', checkConnected, (req, res, next) => {
 router.get('/edit/:tutorialId', checkCreatorOfTutorial, (req, res, next) => {
   Tutorial.findById(req.params.tutorialId)
     .then(tutorial => {
-      res.render('protected/edit', { tutorial })
+      res.render('protected/edit', { tutorial });
     })
     .catch(err => {
       console.log(err);
       next(err);
-    })
-})
+    });
+});
 
 // POST '/edit/:tutorialId'
 // ==> render edit success if succeed
@@ -80,41 +85,52 @@ router.post('/edit/:tutorialId', checkCreatorOfTutorial, (req, res, next) => {
   const imgUrl = assignImg(category);
   const color = assignColor(category);
 
-  Tutorial.findByIdAndUpdate(req.params.tutorialId, {
-    link,
-    title,
-    description,
-    type,
-    duration,
-    category,
-    imgUrl,
-    color,
-    _creator: req.user._id
-  }, { new: true })
+  Tutorial.findByIdAndUpdate(
+    req.params.tutorialId,
+    {
+      link,
+      title,
+      description,
+      type,
+      duration,
+      category,
+      imgUrl,
+      color,
+      _creator: req.user._id
+    },
+    { new: true }
+  )
     .then(updatedTutorial => {
       console.log(updatedTutorial);
-      res.render('protected/edit-success')
+      res.redirect('/edit-success');
     })
     .catch(err => {
       console.log(err);
       next(err);
-    })
-})
+    });
+});
+
+router.get('/edit-success', (req, res, next) => {
+  res.render('protected/edit-success');
+});
 
 /************************************
  * Delete Tutorial (protected)
  ************************************/
 // GET '/delete/:tutorialId'
 // ==> redirect to profile when succeeded
-router.get('/delete/:tutorialId', checkCreatorOfTutorial, (req, res, next) => {
-  Tutorial.findByIdAndDelete(req.params.tutorialId)
+router.get('/delete/:tutorialId', checkConnected, (req, res, next) => {
+  Promise.all([
+    Tutorial.findByIdAndDelete(req.params.tutorialId),
+    Like.deleteMany({ _tutorial: req.params.tutorialId })
+  ])
     .then(() => {
-      res.redirect('/profile')
+      res.redirect('/profile');
     })
     .catch(err => {
-      console.log("Err happened when deleting at allposts ", err);
+      console.log(err);
       next(err);
-    })
-})
+    });
+});
 
-module.exports = router
+module.exports = router;

@@ -1,8 +1,9 @@
 const express = require('express');
 const passport = require('passport');
 const User = require('../models/User');
-const bcrypt = require('bcryptjs'); 
-const { checkConnected } = require('../config/middlewares')
+const bcrypt = require('bcryptjs');
+const { checkConnected } = require('../config/middlewares');
+const { assignProfilePic } = require('../function/functions');
 
 const router = express.Router();
 const bcryptSalt = 10;
@@ -62,15 +63,16 @@ router.post('/signup', (req, res, next) => {
     const newUser = {
       username,
       password: hashPass,
-      description
+      description,
+      imgUrl: assignProfilePic()
     };
 
     User.create(newUser)
       .then(userCreated => {
         // req.login logs in the user given in parameters
         req.login(userCreated, () => {
-          res.redirect('/auth/signup-success')
-        })
+          res.redirect('/auth/signup-success');
+        });
       })
       .catch(err => {
         console.log(err);
@@ -81,10 +83,9 @@ router.post('/signup', (req, res, next) => {
   });
 });
 
-// TODO: protect the router
 router.get('/signup-success', checkConnected, (req, res) => {
-  res.render('auth/signup-success')
-})
+  res.render('auth/signup-success');
+});
 
 /****************************************
  * Logout

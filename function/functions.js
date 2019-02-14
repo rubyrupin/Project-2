@@ -27,7 +27,7 @@ module.exports = {
     return rootPath + imgFile;
   },
 
-  assignColor: function assignColor(category) {
+  assignColor: function(category) {
     switch (category) {
       case 'html/css':
       case 'react':
@@ -38,5 +38,10 @@ module.exports = {
       case 'nodejs':
         return 'text-dark';
     }
+  },
+
+  assignProfilePic: function() {
+    let n = Math.floor(Math.random() * 26);
+    return `/images/profile-pic/profile${n}.svg`;
   }
 };
