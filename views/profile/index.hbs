@@ -96,7 +96,7 @@
 		<div class="card p-0 pb-1 col-lg-3 col-md-5 col-sm-6 m-3 shadow-sm">
 
 			{{!-- title --}}
-			<a href="{{this._tutorial.link}}" target="_blank">
+			<a href="{{this._tutorial.link}}" class="title" target="_blank">
 				<div>
 					<h4 class=" {{this._tutorial.color}} text-center m-3">{{this._tutorial.title}}</h4>
 					<img src="{{this._tutorial.imgUrl}}" class="card-img-top" alt="category: {{this._tutorial.category}}">
@@ -113,8 +113,8 @@
 				</p>
 				{{!-- creator --}}
 				<p class="text-secondary">
-					<a class="creator"
-						href="/profile/{{this._tutorial._creator.username}}">{{this._tutorial._creator.username}}</a> shared this
+					<a class="creator" href="/profile/{{this._tutorial._creator.username}}">{{this._tutorial._creator.username}}</a>
+					shared this
 				</p>
 
 				<div class="d-flex align-items-center justify-content-between mt-3">
