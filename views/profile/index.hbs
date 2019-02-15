@@ -9,13 +9,19 @@
 		</div>
 
 		<div class="col-lg ml-lg-5 pr-lg-5 text-lg-left text-center">
-			<h3 class="mt-4 text-dark">Hello, {{user.username}}</h3>
+			<h3 class="mt-4 text-dark d-inline">Hello, {{user.username}}
+				{{#if isAdmin}}
+				<i class="fas fa-user-cog text-primary ml-3"></i>
+				{{/if}}
+			</h3>
+
+			
 
 			<div class="d-flex align-items-center">
 				<p class="mt-3 text-secondary mr-3">{{user.description}}</p>
-				<a href="#" class="btn-edit mr-3">
+				{{!-- <a href="#" class="btn-edit mr-3">
 					<i class="fas fa-pen text-secondary-light"></i>
-				</a>
+				</a> --}}
 			</div>
 
 			<a href="/tutorials/all" class="btn btn-outline-blue mt-3 mr-4">See all Tutorials</a>
@@ -28,7 +34,7 @@
 
 {{!-- 3 latest posts --}}
 <section>
-	<h5 class="text-secondary text-center mt-5 pt-lg-2 mb-2">Your Posts:</h5>
+	<h5 class="text-secondary text-center mt-5 pt-lg-2 mb-2">Latest Posts:</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 		{{#each posts}}
@@ -82,7 +88,7 @@
 
 {{!-- 3 latest likes --}}
 <section>
-	<h5 class="text-secondary text-center mt-5 mb-2">Your Likes</h5>
+	<h5 class="text-secondary text-center mt-5 mb-2">Latest Likes</h5>
 
 	<div class="d-flex flex-wrap justify-content-center  tutorials">
 
