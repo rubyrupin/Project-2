@@ -6,7 +6,7 @@ const users = [
     username: 'Amelia',
     password: bcrypt.hashSync('amelia', bcrypt.genSaltSync(bcryptSalt)),
     description:
-      "Hello, I'm Amelia. I want to be a web developer! I'm trying my best to learn and code and become a better person. Please hire me!!!",
+      "Hello, I'm Amelia. I want to become a web developer! I'm trying my best to learn and code and become a better person. Please hire me!!!",
     imgUrl: '/images/profile-pic/profile15.svg'
   },
   {
