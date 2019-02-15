@@ -6,9 +6,8 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-tutorial">
 
 	{{!-- Toggle Button --}}
-	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse"
-		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
+	<button class="navbar-toggler justify-content-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -81,7 +80,7 @@
 				</div>
 
 				{{#if ../isAdmin}}
-				<a href="/admin/delete/{{this._id}}" class="btn-delete ml-5 mr-n5">
+				<a href="/admin/delete/{{this._id}}" class="btn-delete ml-5">
 					<i class="far fa-trash-alt fa-2x text-secondary-light"></i>
 				</a>
 				{{/if}}
@@ -89,7 +88,7 @@
 				<div class="d-flex align-items-center">
 
 					<i class="d-block fas fa-heart fa-2x text-{{#if this.isLiked}}red{{else}}secondary{{/if}}-light btn-like"
-						data-tutorial-id="{{this._id}}"></i>
+					 data-tutorial-id="{{this._id}}"></i>
 
 					<p class="ml-3 text-secondary-light h5 mb-0" likes="{{this._id}}">{{this.nbOfLikes}}</p>
 				</div>
