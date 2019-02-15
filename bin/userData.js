@@ -12,7 +12,7 @@ const users = [
   {
     username: 'Ruby',
     password: bcrypt.hashSync('ruby', bcrypt.genSaltSync(bcryptSalt)),
-    description: 'Happy little me!',
+    description: 'Hello, I am Ruby and I am learning Javascript.',
     imgUrl: '/images/profile-pic/profile24.svg'
   },
   {
